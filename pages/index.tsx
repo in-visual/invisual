@@ -271,7 +271,7 @@ const Project = styled.div`
 const ProjectTitle = styled.div`
   font-size: 33px;
   font-family: sans-serif;
-  color: white;
+  color: #01a7a7;
   text-align: center;
   font-weight: 600;
   padding-top: 0px;
@@ -513,7 +513,7 @@ const Test: NextPage = () => {
                   style={{ borderRadius: 20 }}
                   width="650"
                   height="480"
-                  src="https://my.matterport.com/show/?m=Uqi3jaHmyk6"
+                  src="https://my.matterport.com/show/?m=GUR73APWQQQ"
                   frameBorder="0"
                   allowFullScreen
                   allow="xr-spatial-tracking"
@@ -643,13 +643,13 @@ const Test: NextPage = () => {
               autoComplete="off"
             >
               <Form.Item
-                label="YOUR NAME:"
+                label="VAŠE IME:"
                 name="name"
                 style={{ width: 500 }}
                 rules={[{ required: true, message: "Please input your name!" }]}
               >
                 <Input
-                  placeholder="ENTER NAME"
+                  placeholder="UNESITE IME"
                   style={{
                     borderRadius: 200,
                     border: "1px solid var(--neutral, #D8E8E7)",
@@ -659,7 +659,7 @@ const Test: NextPage = () => {
               </Form.Item>
 
               <Form.Item
-                label="YOUR EMAIL:"
+                label="VAŠ EMAIL:"
                 name="email"
                 style={{ width: 500 }}
                 rules={[
@@ -668,7 +668,7 @@ const Test: NextPage = () => {
                 ]}
               >
                 <Input
-                  placeholder="ENTER EMAIL ADDRESS"
+                  placeholder="UNESITE EMAIL ADRESU"
                   style={{
                     borderRadius: 200,
                     border: "1px solid var(--neutral, #D8E8E7)",
@@ -678,10 +678,10 @@ const Test: NextPage = () => {
               </Form.Item>
 
               <Form.Item
-                label="YOUR MESSAGE:"
+                label="VAŠA PORUKA:"
                 name="message"
                 rules={[
-                  { required: true, message: "Please input your message!" },
+                  { required: true, message: "Molimo upišite svoju poruku!" },
                 ]}
               >
                 <TextArea
@@ -692,12 +692,12 @@ const Test: NextPage = () => {
                     border: "1px solid var(--neutral, #D8E8E7)",
                     fontSize: 12,
                   }}
-                  placeholder="type your message here..."
+                  placeholder="Molimo upišite svoju poruku..."
                 />
               </Form.Item>
 
               <Form.Item>
-                <Button htmlType="submit">SUBMIT</Button>
+                <Button htmlType="submit">POŠALJI</Button>
               </Form.Item>
             </Form>
           </ContactFormWrapper>
@@ -712,13 +712,13 @@ const Test: NextPage = () => {
               autoComplete="off"
             >
               <Form.Item
-                label="YOUR NAME:"
+                label="VAŠE IME:"
                 name="name"
                 style={{ width: 350 }}
                 rules={[{ required: true, message: "Please input your name!" }]}
               >
                 <Input
-                  placeholder="ENTER NAME"
+                  placeholder="UNESITE IME"
                   style={{
                     borderRadius: 200,
                     border: "1px solid var(--neutral, #D8E8E7)",
@@ -728,7 +728,7 @@ const Test: NextPage = () => {
               </Form.Item>
 
               <Form.Item
-                label="YOUR EMAIL:"
+                label="VAŠ EMAIL:"
                 name="email"
                 style={{ width: 350 }}
                 rules={[
@@ -737,7 +737,7 @@ const Test: NextPage = () => {
                 ]}
               >
                 <Input
-                  placeholder="ENTER EMAIL ADDRESS"
+                  placeholder="UNESITE EMAIL ADRESU"
                   style={{
                     borderRadius: 200,
                     border: "1px solid var(--neutral, #D8E8E7)",
@@ -747,10 +747,10 @@ const Test: NextPage = () => {
               </Form.Item>
 
               <Form.Item
-                label="YOUR MESSAGE:"
+                label="VAŠA PORUKA:"
                 name="message"
                 rules={[
-                  { required: true, message: "Please input your message!" },
+                  { required: true, message: "Molimo upišite svoju poruku!" },
                 ]}
               >
                 <TextArea
@@ -761,12 +761,12 @@ const Test: NextPage = () => {
                     border: "1px solid var(--neutral, #D8E8E7)",
                     fontSize: 12,
                   }}
-                  placeholder="type your message here..."
+                  placeholder="Molimo upišite svoju poruku ovde..."
                 />
               </Form.Item>
 
               <Form.Item>
-                <Button htmlType="submit">SUBMIT</Button>
+                <Button htmlType="submit">POŠALJI</Button>
               </Form.Item>
             </Form>
           </ContactFormWrapper>
@@ -783,7 +783,7 @@ const Test: NextPage = () => {
             </div>
             <FirstFooter>
               <FooterText>Kontakt</FooterText>
-              <FooterText>+385 97 729 7234</FooterText>
+              <FooterText>+385 97 648 3828</FooterText>
               <FooterText>invisual.zg@gmail.com</FooterText>
             </FirstFooter>
             <FirstFooter>
@@ -791,7 +791,7 @@ const Test: NextPage = () => {
               <FooterTextWrapper
                 onClick={() =>
                   window.open(
-                    "https://www.instagram.com/invisual_nekretnine/"
+                    "https://www.instagram.com/invisual_design/"
                   )
                 }
               >
@@ -825,7 +825,7 @@ const Test: NextPage = () => {
           <Footer>
             <FirstFooter>
               <FooterText>Kontakt</FooterText>
-              <FooterText>+385 97 729 7234</FooterText>
+              <FooterText>+385 97 648 3828</FooterText>
               <FooterText>invisual.zg@gmail.com</FooterText>
             </FirstFooter>
             <FirstFooter>
