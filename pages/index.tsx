@@ -500,9 +500,9 @@ const Test: NextPage = () => {
                   style={{ filter: "blur(5px)" }}
                 />
                 <CardTitle>Dron</CardTitle>
-                <CardDescription style={{ padding: "0px 25px 0px 25px" }}>
-                  
-                </CardDescription>
+                <CardDescription
+                  style={{ padding: "0px 25px 0px 25px" }}
+                ></CardDescription>
               </CardWithoutHover>
               <CardWithoutHover>
                 <CardImage
@@ -572,7 +572,7 @@ const Test: NextPage = () => {
                   style={{ borderRadius: 20 }}
                   width="350"
                   height="350"
-                  src="https://my.matterport.com/show/?m=Uqi3jaHmyk6"
+                  src="https://my.matterport.com/show/?m=GUR73APWQQQ"
                   frameBorder="0"
                   allowFullScreen
                   allow="xr-spatial-tracking"
@@ -809,9 +809,7 @@ const Test: NextPage = () => {
               <FooterText>Drustvene mreze</FooterText>
               <FooterTextWrapper
                 onClick={() =>
-                  window.open(
-                    "https://www.instagram.com/invisual_design/"
-                  )
+                  window.open("https://www.instagram.com/invisual_design/")
                 }
               >
                 <img
@@ -851,9 +849,7 @@ const Test: NextPage = () => {
               <FooterText>Drustvene mreze</FooterText>
               <FooterTextWrapper
                 onClick={() =>
-                  window.open(
-                    "https://www.instagram.com/invisual2/?igsh=MWZxc2d0ZjJ1enoydg%3D%3D"
-                  )
+                  window.open("https://www.instagram.com/invisual_design/")
                 }
               >
                 <img
