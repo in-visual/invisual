@@ -466,7 +466,7 @@ const Test: NextPage = () => {
             <Cards>
               <Card>
                 <CardImage src="./images/invisual/question.jpg" alt="test" />
-                <CardTitle>Besplatna procjena nekretnineecee</CardTitle>
+                <CardTitle>Besplatna procjena nekretnine</CardTitle>
                 <CardDescription>
                   Otvoreni smo za sva potencijalna pitanja.
                 </CardDescription>
@@ -501,7 +501,7 @@ const Test: NextPage = () => {
                 />
                 <CardTitle>Dron</CardTitle>
                 <CardDescription style={{ padding: "0px 25px 0px 25px" }}>
-                  Uskoro dolazi!
+                  
                 </CardDescription>
               </CardWithoutHover>
               <CardWithoutHover>
@@ -511,7 +511,7 @@ const Test: NextPage = () => {
                   style={{ filter: "blur(5px)" }}
                 />
                 <CardTitle>Fotografije</CardTitle>
-                <CardDescription>Uskoro dolazi!</CardDescription>
+                <CardDescription> </CardDescription>
               </CardWithoutHover>
             </Cards>
           </SectionOne>
