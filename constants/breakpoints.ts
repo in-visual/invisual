@@ -1,9 +1,9 @@
-export const MOBILE_BREAKPOINT = 428;
+export const MOBILE_BREAKPOINT = 440;
 export const CONTAINER_MAX_WIDTH = 1440;
 // export const CONTAINER_MAX_WIDTH = 1920;
 export enum Breakpoints {
   mobileS = "361px",
-  mobileM = "391px",
+  mobileM = "390px",
   mobileL = "440px",
   tablet = "768px",
   laptop = "1024px",
