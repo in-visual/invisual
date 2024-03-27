@@ -174,6 +174,29 @@ const AdditionalTitle = styled.div`
   }
 `;
 
+const AdditionalTitleTure = styled.div`
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  width: 100%;
+
+  ${Card}:hover & {
+    opacity: 1;
+  }
+  @media screen and ${Device.mobileL} {
+    font-size: 20px;
+  }
+  @media screen and ${Device.mobileM} {
+    font-size: 20px;
+  }
+`;
+
 const AdditionalText = styled.div`
   position: absolute;
   font-size: 16px;
@@ -305,17 +328,13 @@ const ContactTitle = styled.div`
 
 const VideoImage = styled.img`
   position: absolute;
-  left: 40%;
-  top: 25%;
-
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   @media screen and ${Device.mobileL} {
-    left: 35%;
-    top: 30%;
   }
 
   @media screen and ${Device.mobileM} {
-    left: 32%;
-    top: 30%;
   }
 `;
 
@@ -347,7 +366,6 @@ const SectionOne = styled.div`
     padding: 0px 30px;
   }
   @media screen and ${Device.mobileM} {
-    padding: 0px 30px;
   }
 `;
 
@@ -393,7 +411,7 @@ const Test: NextPage = () => {
 
   return (
     <Layout title={"In Visual"}>
-      <div>
+      <div style={{ width: "100%" }}>
         <div style={{ position: "relative" }}>
           <Hidden xs sm>
             <VideoImage
@@ -432,6 +450,7 @@ const Test: NextPage = () => {
               loop
               autoPlay
               muted
+              playsInline
             >
               <source src="./images/invisual/0215(2).mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -453,8 +472,8 @@ const Test: NextPage = () => {
                 </CardDescription>
                 <AdditionalTitle>Besplatna procjena nekretnine</AdditionalTitle>
                 <AdditionalText>
-                Nudimo besplatnu procjenu vaše nekretnine putem interneta kako bi olakšali
-                proces saznanja oboma važnih informacija.
+                  Nudimo besplatnu procjenu vaše nekretnine putem interneta kako
+                  bi olakšali proces saznanja oboma važnih informacija.
                 </AdditionalText>
               </Card>
               <Card>
@@ -464,7 +483,7 @@ const Test: NextPage = () => {
                   Naše usluge oživljavaju vašu imovinu pomoću imerzivnih 3D tura
                   snimljenih sa najmodernijim Insta X3 360 kamerama.
                 </CardDescription>
-                <AdditionalTitle>Virtualne Ture</AdditionalTitle>
+                <AdditionalTitleTure>Virtualne Ture</AdditionalTitleTure>
                 <AdditionalText>
                   Koristeći cutting-edge tehnologiju s Matterport.com, pružamo
                   besprijekornu online platformu, osiguravajući potencijalnim
@@ -583,32 +602,32 @@ const Test: NextPage = () => {
         </div>
         <FirstWrapper>
           <FirstDescription>
-            <p>
+            <span>
               Dobrodošli u InVisual, gdje se inovacija susreće s izvrsnošću u
               području slikanja nekretnina. Specijalizirani smo za pružanje
               vrhunskih usluga virtualne šetnje skrojenih za vaše objekte,
               osiguravajući da se vaša nekretnina ističe na današnjem
               konkurentnom tržištu.{" "}
-            </p>
-            <p>
+            </span>
+            <span>
               {" "}
-              U InVisual koristimo najnoviju opremu za snimanje zadivljujućih
-              slika. Naša predanost izvrsnosti proteže se na naše detaljne
-              usluge virtualne ture, povećavajući privlačnost vaših obilazaka
-              nekretnine i omogućavajući posjetu vašeg objekta 24/7. Naš tim je
-              pruža usluge u zemljama Hrvatske i Bosne i Hercegovine. Mogućnost
-              dogovora u kratkom vremenskom roku za područje grada Zagreba i
-              Mostara, za upite drugih gradova javiti se na
+              <br />U InVisual koristimo najnoviju opremu za snimanje
+              zadivljujućih slika. Naša predanost izvrsnosti proteže se na naše
+              detaljne usluge virtualne ture, povećavajući privlačnost vaših
+              obilazaka nekretnine i omogućavajući posjetu vašeg objekta 24/7.
+              Naš tim je pruža usluge u zemljama Hrvatske i Bosne i Hercegovine.
+              Mogućnost dogovora u kratkom vremenskom roku za područje grada
+              Zagreba i Mostara, za upite drugih gradova javiti se na
               invisual.zg@gmail.com i invisual.mo@gmail.com .
-            </p>{" "}
-            <p>
-              {" "}
-              Sa strašću za preciznošću i oštrim okom za detalje, naš tim je
-              posvećen pretvaranju vaše nekretnine u vizualno remek-djelo. Bilo
-              da ste stručnjak za nekretnine, vlasnik nekretnine ili posjetitelj
-              vjerujte da će InVisual redefinirati kako se vaš prostor
-              doživljava.
-            </p>
+            </span>{" "}
+            <span>
+              <br /> Sa strašću za preciznošću i oštrim okom za detalje, naš tim
+              je posvećen pretvaranju vaše nekretnine u vizualno remek-djelo.
+              Bilo da ste stručnjak za nekretnine, vlasnik nekretnine ili
+              posjetitelj vjerujte da će InVisual redefinirati kako se vaš
+              prostor doživljava.
+            </span>
+            <br />
             Doživite budućnost slikanja nekretnina s InVisual timom, gdje svaki
             okvir priča priču, a svaki obilazak je impresivno putovanje u srce
             vašeg imanja.
