@@ -328,17 +328,13 @@ const ContactTitle = styled.div`
 
 const VideoImage = styled.img`
   position: absolute;
-  left: 40%;
-  top: 25%;
-
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   @media screen and ${Device.mobileL} {
-    left: 35%;
-    top: 30%;
   }
 
   @media screen and ${Device.mobileM} {
-    left: 32%;
-    top: 30%;
   }
 `;
 
