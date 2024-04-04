@@ -1,5 +1,5 @@
 export const MOBILE_BREAKPOINT = 440;
-export const CONTAINER_MAX_WIDTH = 1440;
+export const CONTAINER_MAX_WIDTH = 1600;
 // export const CONTAINER_MAX_WIDTH = 1920;
 export enum Breakpoints {
   mobileS = "361px",

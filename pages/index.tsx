@@ -226,7 +226,7 @@ const Footer = styled.div`
   width: 100%;
   height: 200px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   display: flex;
   flex-flow: row;
   gap: 200px;
@@ -472,8 +472,8 @@ const Test: NextPage = () => {
                 </CardDescription>
                 <AdditionalTitle>Besplatna procjena projekta</AdditionalTitle>
                 <AdditionalText>
-                  Nudimo besplatnu procjenu vašeg projekta u svrhu 
-                  dobivanja finalne cijene naših usluga.
+                  Nudimo besplatnu procjenu vašeg projekta u svrhu dobivanja
+                  finalne cijene naših usluga.
                 </AdditionalText>
               </Card>
               <Card>
