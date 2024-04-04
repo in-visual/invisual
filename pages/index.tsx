@@ -466,24 +466,24 @@ const Test: NextPage = () => {
             <Cards>
               <Card>
                 <CardImage src="./images/invisual/question.jpg" alt="test" />
-                <CardTitle>Besplatna procjena nekretnine</CardTitle>
+                <CardTitle>Besplatna procjena projekta</CardTitle>
                 <CardDescription>
                   Otvoreni smo za sva potencijalna pitanja.
                 </CardDescription>
-                <AdditionalTitle>Besplatna procjena nekretnine</AdditionalTitle>
+                <AdditionalTitle>Besplatna procjena projekta</AdditionalTitle>
                 <AdditionalText>
-                  Nudimo besplatnu procjenu vaše nekretnine putem interneta kako
-                  bi olakšali proces saznanja oboma važnih informacija.
+                  Nudimo besplatnu procjenu vašeg projekta u svrhu 
+                  dobivanja finalne cijene naših usluga.
                 </AdditionalText>
               </Card>
               <Card>
                 <CardImage src="./images/invisual/x3.png" alt="test" />
-                <CardTitle>Virtualne ture</CardTitle>
+                <CardTitle>3D Virtualne ture</CardTitle>
                 <CardDescription>
                   Naše usluge oživljavaju vašu imovinu pomoću imerzivnih 3D tura
                   snimljenih sa najmodernijim Insta X3 360 kamerama.
                 </CardDescription>
-                <AdditionalTitleTure>Virtualne Ture</AdditionalTitleTure>
+                <AdditionalTitleTure>3D Virtualne Ture</AdditionalTitleTure>
                 <AdditionalText>
                   Koristeći cutting-edge tehnologiju s Matterport.com, pružamo
                   besprijekornu online platformu, osiguravajući potencijalnim
@@ -605,7 +605,7 @@ const Test: NextPage = () => {
             <span>
               Dobrodošli u InVisual, gdje se inovacija susreće s izvrsnošću u
               području slikanja nekretnina. Specijalizirani smo za pružanje
-              vrhunskih usluga virtualne šetnje skrojenih za vaše objekte,
+              vrhunskih usluga 3D virtualne šetnje skrojenih za vaše objekte,
               osiguravajući da se vaša nekretnina ističe na današnjem
               konkurentnom tržištu.{" "}
             </span>
@@ -613,7 +613,7 @@ const Test: NextPage = () => {
               {" "}
               <br />U InVisual koristimo najnoviju opremu za snimanje
               zadivljujućih slika. Naša predanost izvrsnosti proteže se na naše
-              detaljne usluge virtualne ture, povećavajući privlačnost vaših
+              detaljne usluge 3D virtualne ture, povećavajući privlačnost vaših
               obilazaka nekretnine i omogućavajući posjetu vašeg objekta 24/7.
               Naš tim je pruža usluge u zemljama Hrvatske i Bosne i Hercegovine.
               Mogućnost dogovora u kratkom vremenskom roku za područje grada
