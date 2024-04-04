@@ -804,6 +804,8 @@ const Test: NextPage = () => {
               <FooterText>Kontakt</FooterText>
               <FooterText>+385 97 648 3828</FooterText>
               <FooterText>invisual.zg@gmail.com</FooterText>
+              <FooterText>+387 63 757 084</FooterText>
+              <FooterText>invisual.mo@gmail.com</FooterText>
             </FirstFooter>
             <FirstFooter>
               <FooterText>Drustvene mreze</FooterText>
