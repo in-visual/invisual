@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 import * as React from "react";
 import * as Router from "next/router";
 import Link from "next/link";
@@ -204,7 +205,11 @@ export default function Header({ handleLanguageChange, currentLanguage }) {
     {
       key: "1",
       label: (
-        <div onClick={() => handleLanguageChange("EN")}>
+        <div
+          style={{ display: "flex", gap: 5 }}
+          onClick={() => handleLanguageChange("EN")}
+        >
+          <span className="fi fi-gb"></span>
           {currentLanguage.english}
         </div>
       ),
@@ -212,7 +217,11 @@ export default function Header({ handleLanguageChange, currentLanguage }) {
     {
       key: "2",
       label: (
-        <div onClick={() => handleLanguageChange("CRO")}>
+        <div
+          style={{ display: "flex", gap: 5 }}
+          onClick={() => handleLanguageChange("CRO")}
+        >
+          <span className="fi fi-hr"></span>
           {currentLanguage.croatian}
         </div>
       ),
