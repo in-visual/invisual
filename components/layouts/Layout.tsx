@@ -15,6 +15,7 @@ type Props = {
   title?: string;
   handleLanguageChange: any;
   currentLanguage: any;
+  language: any;
 };
 
 const Body = styled.div`
@@ -73,6 +74,7 @@ const Layout = ({
   title = "In Visual",
   handleLanguageChange,
   currentLanguage,
+  language,
 }: Props): JSX.Element => {
   // const description = "Squat is life";
 
@@ -202,6 +204,7 @@ const Layout = ({
         <Header
           handleLanguageChange={handleLanguageChange}
           currentLanguage={currentLanguage}
+          language={language}
         />
         <Body>
           {/* <Divider /> */}

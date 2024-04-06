@@ -420,6 +420,7 @@ const Test: NextPage = () => {
       title={"In Visual"}
       handleLanguageChange={handleLanguageChange}
       currentLanguage={currentLanguage}
+      language={language}
     >
       <div style={{ width: "100%" }}>
         <div style={{ position: "relative" }}>

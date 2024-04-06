@@ -173,7 +173,11 @@ const TriangleHover = styled.img`
   }
 `;
 
-export default function Header({ handleLanguageChange, currentLanguage }) {
+export default function Header({
+  handleLanguageChange,
+  currentLanguage,
+  language,
+}) {
   const router = Router.useRouter();
   const path = Router.useRouter().pathname;
   const [isLinesContainerOpen, setIsLinesContainerOpen] = React.useState(false);
@@ -308,7 +312,11 @@ export default function Header({ handleLanguageChange, currentLanguage }) {
                 onClick={(e) => e.preventDefault()}
               >
                 <Space>
-                  {currentLanguage.language}
+                  {language === "CRO" ? (
+                    <span className="fi fi-hr"></span>
+                  ) : (
+                    <span className="fi fi-gb"></span>
+                  )}
                   <DownOutlined />
                 </Space>
               </a>
