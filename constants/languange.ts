@@ -36,7 +36,7 @@ export const English = {
   cfEmailHolder: "Enter your email",
   cfMessage: "Your message:",
   cfMessageHolder: "Please enter your message...",
-  cfSend: "SEND",
+  cfSend: "SEND REQUEST",
   footerText: "Contact us",
   footerSocial: "Social Media", // Add more key-value pairs as needed
 };
@@ -78,7 +78,7 @@ export const Croatian = {
   cfEmailHolder: "UNESITE EMAIL ADRESU",
   cfMessage: "VAŠA PORUKA:",
   cfMessageHolder: "Molimo upišite svoju poruku...",
-  cfSend: "POŠALJI",
+  cfSend: "POŠALJI UPIT",
   footerText: "Kontakt",
   footerSocial: "Drustvene mreze",
   // Add more key-value pairs as needed

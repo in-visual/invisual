@@ -294,7 +294,10 @@ export default function Header({ handleLanguageChange, currentLanguage }) {
                 items,
               }}
             >
-              <a onClick={(e) => e.preventDefault()}>
+              <a
+                style={{ fontFamily: "Inter-Regular", fontSize: 15 }}
+                onClick={(e) => e.preventDefault()}
+              >
                 <Space>
                   {currentLanguage.language}
                   <DownOutlined />
