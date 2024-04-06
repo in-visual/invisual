@@ -1,17 +1,20 @@
 import * as Router from "next/router";
 import Head from "next/head";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { ScreenClassProvider } from "react-grid-system";
 import { CONTAINER_MAX_WIDTH, Device } from "../../constants/breakpoints";
 import Header from "../headers/Header";
 // import Sticky from '../footers/Sticky';
 import { fontFamilyMain } from "../../styles/globalstyles";
+import { Croatian, English } from "../../constants/languange";
 // import Footer from "../footer/Footer";
 
 type Props = {
   children?: ReactNode;
   title?: string;
+  handleLanguageChange: any;
+  currentLanguage: any;
 };
 
 const Body = styled.div`
@@ -65,7 +68,12 @@ const Container = styled.div`
   background: #ffffff;
   opacity: 0.1;
 `; */
-const Layout = ({ children, title = "In Visual" }: Props): JSX.Element => {
+const Layout = ({
+  children,
+  title = "In Visual",
+  handleLanguageChange,
+  currentLanguage,
+}: Props): JSX.Element => {
   // const description = "Squat is life";
 
   return (
@@ -191,7 +199,10 @@ const Layout = ({ children, title = "In Visual" }: Props): JSX.Element => {
             content="initial-scale=1.0, width=device-width"
           />
         </Head>
-        <Header />
+        <Header
+          handleLanguageChange={handleLanguageChange}
+          currentLanguage={currentLanguage}
+        />
         <Body>
           {/* <Divider /> */}
           <Container>{children}</Container>

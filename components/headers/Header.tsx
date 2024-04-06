@@ -7,6 +7,8 @@ import styled from "styled-components";
 import { CONTAINER_MAX_WIDTH, Device } from "../../constants/breakpoints";
 import { Hidden, Visible } from "react-grid-system";
 import ScrollProgressBar from "../animations/ScrollProgressBar";
+import { Dropdown, Space } from "antd";
+import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 
 const Self = styled.header`
   position: sticky;
@@ -17,7 +19,7 @@ const Self = styled.header`
   display: flex;
   align-items: center;
   flex-flow: column;
-  z-index: 100000;
+  z-index: 100;
   // border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(40, 30, 48, 0.15);
   @media screen and ${Device.mobileL} {
@@ -170,7 +172,7 @@ const TriangleHover = styled.img`
   }
 `;
 
-export default function Header() {
+export default function Header({ handleLanguageChange, currentLanguage }) {
   const router = Router.useRouter();
   const path = Router.useRouter().pathname;
   const [isLinesContainerOpen, setIsLinesContainerOpen] = React.useState(false);
@@ -198,6 +200,24 @@ export default function Header() {
       setActiveSection(sectionId);
     }
   };
+  const items = [
+    {
+      key: "1",
+      label: (
+        <div onClick={() => handleLanguageChange("EN")}>
+          {currentLanguage.english}
+        </div>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <div onClick={() => handleLanguageChange("CRO")}>
+          {currentLanguage.croatian}
+        </div>
+      ),
+    },
+  ];
 
   return (
     <Self>
@@ -238,7 +258,7 @@ export default function Header() {
                     scrollToSection("section1");
                   }}
                 >
-                  Usluge
+                  {currentLanguage.services}
                 </NavItem>
                 <NavItem
                   path={path}
@@ -247,7 +267,7 @@ export default function Header() {
                     scrollToSection("section2");
                   }}
                 >
-                  Projekti
+                  {currentLanguage.projects}
                 </NavItem>
                 <NavItem
                   path={path}
@@ -256,7 +276,7 @@ export default function Header() {
                     scrollToSection("section3");
                   }}
                 >
-                  O nama
+                  {currentLanguage.aboutUs}
                 </NavItem>
                 <NavItem
                   path={path}
@@ -265,10 +285,22 @@ export default function Header() {
                     scrollToSection("section4");
                   }}
                 >
-                  Kontakt
+                  {currentLanguage.contact}
                 </NavItem>
               </NavItems>
             </Nav>
+            <Dropdown
+              menu={{
+                items,
+              }}
+            >
+              <a onClick={(e) => e.preventDefault()}>
+                <Space>
+                  {currentLanguage.language}
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
           </Hidden>
           {/* <Visible xs sm>
             {isLinesContainerOpen && (

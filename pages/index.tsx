@@ -6,6 +6,7 @@ import Layout from "../components/layouts/Layout";
 import { Hidden, Visible } from "react-grid-system";
 import { Device } from "../constants/breakpoints";
 import { Button, Form, Input, Select, message } from "antd";
+import { English, Croatian } from "../constants/languange"; // Adjust the path as necessary
 import axios from "axios";
 
 const Title = styled.div`
@@ -376,6 +377,8 @@ export const handleOpenTab = (url: string) => {
 const Test: NextPage = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const router = Router.useRouter();
+  const introDivRef = React.useRef<HTMLDivElement>(null);
+  const [language, setLanguage] = React.useState<string>("CRO");
 
   const { TextArea } = Input;
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -407,10 +410,17 @@ const Test: NextPage = () => {
     setIsOpen(!isOpen);
   };
 
-  const introDivRef = React.useRef<HTMLDivElement>(null);
+  const handleLanguageChange = (lang: string) => {
+    setLanguage(lang);
+  };
+  const currentLanguage = language === "EN" ? English : Croatian;
 
   return (
-    <Layout title={"In Visual"}>
+    <Layout
+      title={"In Visual"}
+      handleLanguageChange={handleLanguageChange}
+      currentLanguage={currentLanguage}
+    >
       <div style={{ width: "100%" }}>
         <div style={{ position: "relative" }}>
           <Hidden xs sm>
@@ -459,36 +469,33 @@ const Test: NextPage = () => {
         </div>
         <div>
           <SectionOne>
-            <Title id="section1">Usluge</Title>
-            <Description>
-              Unaprijedite svoje poslovanje pomoću naših usluga
-            </Description>
+            <Title id="section1">{currentLanguage.services}</Title>
+            <Description>{currentLanguage.servicesTitle}</Description>
             <Cards>
               <Card>
                 <CardImage src="./images/invisual/question.jpg" alt="test" />
-                <CardTitle>Besplatna procjena projekta</CardTitle>
+                <CardTitle>{currentLanguage.firstCardTitle}</CardTitle>
                 <CardDescription>
-                  Otvoreni smo za sva potencijalna pitanja.
+                  {currentLanguage.firstCardDescription}
                 </CardDescription>
-                <AdditionalTitle>Besplatna procjena projekta</AdditionalTitle>
+                <AdditionalTitle>
+                  {currentLanguage.firstCardHover}
+                </AdditionalTitle>
                 <AdditionalText>
-                  Nudimo besplatnu procjenu vašeg projekta u svrhu dobivanja
-                  finalne cijene naših usluga.
+                  {currentLanguage.firstCardHoverDescription}
                 </AdditionalText>
               </Card>
               <Card>
                 <CardImage src="./images/invisual/x3.png" alt="test" />
-                <CardTitle>3D Virtualne ture</CardTitle>
+                <CardTitle>{currentLanguage.secondCardTitle}</CardTitle>
                 <CardDescription>
-                  Naše usluge oživljavaju vašu imovinu pomoću imerzivnih 3D tura
-                  snimljenih sa najmodernijim Insta X3 360 kamerama.
+                  {currentLanguage.secondCardDescription}
                 </CardDescription>
-                <AdditionalTitleTure>3D Virtualne Ture</AdditionalTitleTure>
+                <AdditionalTitleTure>
+                  {currentLanguage.secondCardHover}
+                </AdditionalTitleTure>
                 <AdditionalText>
-                  Koristeći cutting-edge tehnologiju s Matterport.com, pružamo
-                  besprijekornu online platformu, osiguravajući potencijalnim
-                  kupcima 24/7 pristup vaše imovine, ističući vaše oglase na
-                  konkurentnom tržištu nekretnina.
+                  {currentLanguage.secondCardHoverDescription}
                 </AdditionalText>
               </Card>
             </Cards>
@@ -499,7 +506,7 @@ const Test: NextPage = () => {
                   alt="test"
                   style={{ filter: "blur(5px)" }}
                 />
-                <CardTitle>Dron</CardTitle>
+                <CardTitle>{currentLanguage.thirdCardTitle}</CardTitle>
                 <CardDescription
                   style={{ padding: "0px 25px 0px 25px" }}
                 ></CardDescription>
@@ -510,13 +517,13 @@ const Test: NextPage = () => {
                   alt="test"
                   style={{ filter: "blur(5px)" }}
                 />
-                <CardTitle>Fotografije</CardTitle>
+                <CardTitle>{currentLanguage.fourthCardTitle}</CardTitle>
                 <CardDescription> </CardDescription>
               </CardWithoutHover>
             </Cards>
           </SectionOne>
           <ProjectWrapper id="section2">
-            <ProjectTitle>Projekti</ProjectTitle>
+            <ProjectTitle>{currentLanguage.projects}</ProjectTitle>
             <Hidden xs sm>
               <Project>
                 <iframe
@@ -598,39 +605,21 @@ const Test: NextPage = () => {
               </Project>
             </Visible>
           </ProjectWrapper>
-          <Title id="section3">O nama</Title>
+          <Title id="section3">{currentLanguage.aboutUs}</Title>
         </div>
         <FirstWrapper>
           <FirstDescription>
-            <span>
-              Dobrodošli u InVisual, gdje se inovacija susreće s izvrsnošću u
-              području slikanja nekretnina. Specijalizirani smo za pružanje
-              vrhunskih usluga 3D virtualne šetnje skrojenih za vaše objekte,
-              osiguravajući da se vaša nekretnina ističe na današnjem
-              konkurentnom tržištu.{" "}
-            </span>
+            <span>{currentLanguage.aboutUsOne} </span>
             <span>
               {" "}
-              <br />U InVisual koristimo najnoviju opremu za snimanje
-              zadivljujućih slika. Naša predanost izvrsnosti proteže se na naše
-              detaljne usluge 3D virtualne ture, povećavajući privlačnost vaših
-              obilazaka nekretnine i omogućavajući posjetu vašeg objekta 24/7.
-              Naš tim je pruža usluge u zemljama Hrvatske i Bosne i Hercegovine.
-              Mogućnost dogovora u kratkom vremenskom roku za područje grada
-              Zagreba i Mostara, za upite drugih gradova javiti se na
-              invisual.zg@gmail.com i invisual.mo@gmail.com .
+              <br />
+              {currentLanguage.aboutUsSecond}
             </span>{" "}
             <span>
-              <br /> Sa strašću za preciznošću i oštrim okom za detalje, naš tim
-              je posvećen pretvaranju vaše nekretnine u vizualno remek-djelo.
-              Bilo da ste stručnjak za nekretnine, vlasnik nekretnine ili
-              posjetitelj vjerujte da će InVisual redefinirati kako se vaš
-              prostor doživljava.
+              <br /> {currentLanguage.aboutUsThird}
             </span>
             <br />
-            Doživite budućnost slikanja nekretnina s InVisual timom, gdje svaki
-            okvir priča priču, a svaki obilazak je impresivno putovanje u srce
-            vašeg imanja.
+            {currentLanguage.aboutUsFourth}
           </FirstDescription>
           <Hidden xs sm>
             <img
@@ -653,7 +642,7 @@ const Test: NextPage = () => {
 
         {/* <ContactForm> */}
         <Hidden xs sm>
-          <ContactTitle>Kontaktirajte nas</ContactTitle>
+          <ContactTitle>{currentLanguage.contactFormTitle}</ContactTitle>
           <ContactFormWrapper id="section3">
             <Form
               layout="vertical"
@@ -662,13 +651,13 @@ const Test: NextPage = () => {
               autoComplete="off"
             >
               <Form.Item
-                label="VAŠE IME:"
+                label={currentLanguage.cfName}
                 name="name"
                 style={{ width: 500 }}
                 rules={[{ required: true, message: "Please input your name!" }]}
               >
                 <Input
-                  placeholder="UNESITE IME"
+                  placeholder={currentLanguage.cfNameHolder}
                   style={{
                     borderRadius: 200,
                     border: "1px solid var(--neutral, #D8E8E7)",
@@ -678,7 +667,7 @@ const Test: NextPage = () => {
               </Form.Item>
 
               <Form.Item
-                label="VAŠ EMAIL:"
+                label={currentLanguage.cfEmail}
                 name="email"
                 style={{ width: 500 }}
                 rules={[
@@ -687,7 +676,7 @@ const Test: NextPage = () => {
                 ]}
               >
                 <Input
-                  placeholder="UNESITE EMAIL ADRESU"
+                  placeholder={currentLanguage.cfEmailHolder}
                   style={{
                     borderRadius: 200,
                     border: "1px solid var(--neutral, #D8E8E7)",
@@ -697,7 +686,7 @@ const Test: NextPage = () => {
               </Form.Item>
 
               <Form.Item
-                label="VAŠA PORUKA:"
+                label={currentLanguage.cfMessage}
                 name="message"
                 rules={[
                   { required: true, message: "Molimo upišite svoju poruku!" },
@@ -711,18 +700,18 @@ const Test: NextPage = () => {
                     border: "1px solid var(--neutral, #D8E8E7)",
                     fontSize: 12,
                   }}
-                  placeholder="Molimo upišite svoju poruku..."
+                  placeholder={currentLanguage.cfMessageHolder}
                 />
               </Form.Item>
 
               <Form.Item>
-                <Button htmlType="submit">POŠALJI</Button>
+                <Button htmlType="submit">{currentLanguage.cfSend}</Button>
               </Form.Item>
             </Form>
           </ContactFormWrapper>
         </Hidden>
         <Visible xs sm>
-          <ContactTitle>Kontaktirajte nas</ContactTitle>
+          <ContactTitle>{currentLanguage.contactFormTitle}</ContactTitle>
           <ContactFormWrapper id="section3">
             <Form
               layout="vertical"
@@ -731,13 +720,13 @@ const Test: NextPage = () => {
               autoComplete="off"
             >
               <Form.Item
-                label="VAŠE IME:"
+                label={currentLanguage.cfName}
                 name="name"
                 style={{ width: 350 }}
                 rules={[{ required: true, message: "Please input your name!" }]}
               >
                 <Input
-                  placeholder="UNESITE IME"
+                  placeholder={currentLanguage.cfNameHolder}
                   style={{
                     borderRadius: 200,
                     border: "1px solid var(--neutral, #D8E8E7)",
@@ -747,7 +736,7 @@ const Test: NextPage = () => {
               </Form.Item>
 
               <Form.Item
-                label="VAŠ EMAIL:"
+                label={currentLanguage.cfEmail}
                 name="email"
                 style={{ width: 350 }}
                 rules={[
@@ -756,7 +745,7 @@ const Test: NextPage = () => {
                 ]}
               >
                 <Input
-                  placeholder="UNESITE EMAIL ADRESU"
+                  placeholder={currentLanguage.cfEmailHolder}
                   style={{
                     borderRadius: 200,
                     border: "1px solid var(--neutral, #D8E8E7)",
@@ -766,7 +755,7 @@ const Test: NextPage = () => {
               </Form.Item>
 
               <Form.Item
-                label="VAŠA PORUKA:"
+                label={currentLanguage.cfMessage}
                 name="message"
                 rules={[
                   { required: true, message: "Molimo upišite svoju poruku!" },
@@ -780,12 +769,12 @@ const Test: NextPage = () => {
                     border: "1px solid var(--neutral, #D8E8E7)",
                     fontSize: 12,
                   }}
-                  placeholder="Molimo upišite svoju poruku ovde..."
+                  placeholder={currentLanguage.cfMessageHolder}
                 />
               </Form.Item>
 
               <Form.Item>
-                <Button htmlType="submit">POŠALJI</Button>
+                <Button htmlType="submit">{currentLanguage.cfSend}</Button>
               </Form.Item>
             </Form>
           </ContactFormWrapper>
@@ -801,14 +790,14 @@ const Test: NextPage = () => {
               />
             </div>
             <FirstFooter>
-              <FooterText>Kontakt</FooterText>
+              <FooterText>{currentLanguage.footerText}</FooterText>
               <FooterText>+385 97 648 3828</FooterText>
               <FooterText>invisual.zg@gmail.com</FooterText>
               <FooterText>+387 63 757 084</FooterText>
               <FooterText>invisual.mo@gmail.com</FooterText>
             </FirstFooter>
             <FirstFooter>
-              <FooterText>Drustvene mreze</FooterText>
+              <FooterText>{currentLanguage.footerSocial}</FooterText>
               <FooterTextWrapper
                 onClick={() =>
                   window.open("https://www.instagram.com/invisual_design/")
@@ -843,12 +832,12 @@ const Test: NextPage = () => {
         <Visible xs sm>
           <Footer>
             <FirstFooter>
-              <FooterText>Kontakt</FooterText>
+              <FooterText>{currentLanguage.footerText}</FooterText>
               <FooterText>+385 97 648 3828</FooterText>
               <FooterText>invisual.zg@gmail.com</FooterText>
             </FirstFooter>
             <FirstFooter>
-              <FooterText>Drustvene mreze</FooterText>
+              <FooterText>{currentLanguage.footerSocial}</FooterText>
               <FooterTextWrapper
                 onClick={() =>
                   window.open("https://www.instagram.com/invisual_design/")
