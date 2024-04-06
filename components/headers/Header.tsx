@@ -173,11 +173,24 @@ const TriangleHover = styled.img`
   }
 `;
 
+type HeaderProps = {
+  handleLanguageChange: (language: string) => void;
+  currentLanguage: {
+    english: string;
+    croatian: string;
+    projects: string;
+    services: string;
+    aboutUs: string;
+    contact: string;
+  };
+  language: string;
+};
+
 export default function Header({
   handleLanguageChange,
   currentLanguage,
   language,
-}) {
+}: HeaderProps) {
   const router = Router.useRouter();
   const path = Router.useRouter().pathname;
   const [isLinesContainerOpen, setIsLinesContainerOpen] = React.useState(false);
