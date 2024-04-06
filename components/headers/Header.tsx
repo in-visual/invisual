@@ -322,6 +322,27 @@ export default function Header({
               </a>
             </Dropdown>
           </Hidden>
+          <Visible xs sm>
+            <Dropdown
+              menu={{
+                items,
+              }}
+            >
+              <a
+                style={{ fontFamily: "Inter-Regular", fontSize: 15 }}
+                onClick={(e) => e.preventDefault()}
+              >
+                <Space>
+                  {language === "CRO" ? (
+                    <span className="fi fi-hr"></span>
+                  ) : (
+                    <span className="fi fi-gb"></span>
+                  )}
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
+          </Visible>
           {/* <Visible xs sm>
             {isLinesContainerOpen && (
               <MobileNav>
