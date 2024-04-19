@@ -362,6 +362,49 @@ const FooterTextWrapper = styled.div`
   cursor: pointer;
 `;
 
+const HeaderWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* @media screen and ${Device.mobileL} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media screen and ${Device.mobileM} {
+    grid-template-columns: repeat(1, 1fr);
+  } */
+`;
+
+const HeaderTitle = styled.div`
+  font-size: 33px;
+  font-family: "Poppins", Sans-serif;
+  color: #01a7a7;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 50px;
+  @media screen and ${Device.mobileL} {
+    font-size: 16px;
+  }
+
+  @media screen and ${Device.mobileM} {
+    font-size: 16px;
+  }
+`;
+
+const HeaderDescription = styled.div`
+  font-size: 33px;
+  font-family: "Poppins", Sans-serif;
+  color: #01a7a7;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 50px;
+  @media screen and ${Device.mobileL} {
+    font-size: 16px;
+  }
+
+  @media screen and ${Device.mobileM} {
+    font-size: 16px;
+  }
+`;
 const SectionOne = styled.div`
   @media screen and ${Device.mobileL} {
     padding: 0px 30px;
@@ -425,7 +468,19 @@ const Test: NextPage = () => {
       <div style={{ width: "100%" }}>
         <div style={{ position: "relative" }}>
           <Hidden xs sm>
-            <VideoImage
+            <HeaderWrapper>
+              <HeaderTitle>
+                Lorem ipsum is here, lorem ipsum is here
+              </HeaderTitle>
+              <img
+                src="./images/invisual/newHeader.svg"
+                alt="test"
+                height={500}
+                width={500}
+                style={{ justifySelf: "center" }}
+              />
+            </HeaderWrapper>
+            {/* <VideoImage
               src="./images/invisual/InVisual-white.svg"
               alt="logo"
               height={350}
@@ -443,29 +498,21 @@ const Test: NextPage = () => {
             >
               <source src="./images/invisual/0215(2).mp4" type="video/mp4" />
               Your browser does not support the video tag.
-            </video>
+            </video> */}
           </Hidden>
           <Visible xs sm>
-            <VideoImage
-              src="./images/invisual/InVisual-white.svg"
-              alt="logo"
-              height={150}
-              width={150}
-            />
-            <video
-              style={{
-                height: "600px",
-                width: "100%",
-                objectFit: "cover",
-              }}
-              loop
-              autoPlay
-              muted
-              playsInline
-            >
-              <source src="./images/invisual/0215(2).mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <HeaderWrapper>
+              <HeaderTitle>
+                Lorem ipsum is here, lorem ipsum is here
+              </HeaderTitle>
+              <img
+                src="./images/invisual/newHeader.svg"
+                alt="test"
+                height={225}
+                width={225}
+                style={{ justifySelf: "center" }}
+              />
+            </HeaderWrapper>
           </Visible>
         </div>
         <div>
