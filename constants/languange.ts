@@ -24,7 +24,7 @@ export const English = {
   aboutUsOne:
     "Welcome to InVisual, where innovation meets excellence in the real estate painting area. We specialize in providing top services of 3D virtual tours tailored for your facilities, ensuring that your property stands out in today's competitive market.",
   aboutUsSecond:
-    "At InVisual we use the latest recording equipment Amazing pictures. Our commitment to excellence extends to our detailed 3D virtual tour services, increasing the appeal of your tour of the property and allowing you to visit your property 24/7. Our team provides services in the countries of Croatia and Bosnia and Herzegovina. Possibility of agreement in a short period for the city area Zagreb and Mostar, for inquiries from other cities contact invisual.zg@gmail.com and invisual.mo@gmail.com.",
+    "At InVisual we use the latest recording equipment amazing pictures. Our commitment to excellence extends to our detailed 3D virtual tour services, increasing the appeal of your tour of the property and allowing you to visit your property 24/7. Our team provides services in the countries of Croatia and Bosnia and Herzegovina. Possibility of agreement in a short period for the city area Zagreb and Mostar, for inquiries from other cities contact invisual.zg@gmail.com and invisual.mo@gmail.com.",
   aboutUsThird:
     "With a passion for precision and a keen eye for detail, our team is dedicated to turning your property into a visual masterpiece. Whether you are a real estate expert, property owner, or visitor trust that InVisual will redefine how your space is experiencing.",
   aboutUsFourth:

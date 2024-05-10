@@ -101,7 +101,7 @@ const Card = styled.div`
   height: 500px;
   width: 500px;
   color: white;
-  background-color: black;
+  background-color: white;
   text-align: center;
   align-items: center;
   position: relative;
@@ -267,7 +267,7 @@ const FooterSocial = styled.p`
 
 const ProjectWrapper = styled.div`
   margin-top: 100px;
-  background-color: black;
+  background-color: #f0f2f2;
   width: 100%;
   justify-content: center;
   display: flex;
@@ -375,10 +375,10 @@ const HeaderWrapper = styled.div`
 `;
 
 const HeaderTitle = styled.div`
-  font-size: 33px;
+  font-size: 40px;
   font-family: "Poppins", Sans-serif;
-  color: #01a7a7;
-  text-align: center;
+  color: #54595f;
+  text-align: right;
   font-weight: 600;
   padding-top: 50px;
   @media screen and ${Device.mobileL} {
@@ -470,7 +470,11 @@ const Test: NextPage = () => {
           <Hidden xs sm>
             <HeaderWrapper>
               <HeaderTitle>
-                Lorem ipsum is here, lorem ipsum is here
+                Take your next step with us.
+                {/* // br with us */}
+                {/* Napravite Vaš sljedeći korak s nama.  */}
+                Make your first 3D virtual tour of your property.
+                {/* button action na contact  */}
               </HeaderTitle>
               <img
                 src="./images/invisual/newHeader.svg"
@@ -519,6 +523,7 @@ const Test: NextPage = () => {
           <SectionOne>
             <Title id="section1">{currentLanguage.services}</Title>
             <Description>{currentLanguage.servicesTitle}</Description>
+            {/* #f0f2f2 */}
             <Cards>
               <Card>
                 <CardImage src="./images/invisual/question.jpg" alt="test" />
@@ -550,9 +555,8 @@ const Test: NextPage = () => {
             <Cards>
               <CardWithoutHover>
                 <CardImage
-                  src="./images/invisual/drone1-removebckg.png"
+                  src="./images/invisual/dron-main-engl.png"
                   alt="test"
-                  style={{ filter: "blur(5px)" }}
                 />
                 <CardTitle>{currentLanguage.thirdCardTitle}</CardTitle>
                 <CardDescription
@@ -561,9 +565,8 @@ const Test: NextPage = () => {
               </CardWithoutHover>
               <CardWithoutHover>
                 <CardImage
-                  src="./images/invisual/camera-main.png"
+                  src="./images/invisual/camera-main-engl.png"
                   alt="test"
-                  style={{ filter: "blur(5px)" }}
                 />
                 <CardTitle>{currentLanguage.fourthCardTitle}</CardTitle>
                 <CardDescription> </CardDescription>
