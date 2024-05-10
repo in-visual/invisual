@@ -11,7 +11,7 @@ import axios from "axios";
 
 const Title = styled.div`
   font-size: 33px;
-  font-family: "Poppins", Sans-serif;
+  font-family: "Roboto";
   color: #01a7a7;
   text-align: center;
   font-weight: 600;
@@ -364,6 +364,8 @@ const FooterTextWrapper = styled.div`
 
 const HeaderWrapper = styled.div`
   display: grid;
+  padding-top: 45px;
+  padding-left: 64px;
   grid-template-columns: repeat(2, 1fr);
   /* @media screen and ${Device.mobileL} {
     grid-template-columns: repeat(1, 1fr);
@@ -374,11 +376,56 @@ const HeaderWrapper = styled.div`
   } */
 `;
 
+const HeaderTextWrapper = styled.div`
+  display: row;
+  padding-righy: 64px;
+`;
+
+const HeaderText = styled.div`
+font-size: 28px;
+font-family: "Roboto";
+color: #201a18;
+text-align: center;
+font-weight: 600;
+padding-top: 50px;
+`;
+
+const HeaderButtonWrapper = styled.div`
+  display: row;
+  text-align: center;
+  padding-top: 50px;
+  color: blue;
+`;
+
+// const AboutUs = styled.div`
+//   font-size: 28px;
+//   font-family: "Poppins", Sans-serif;
+//   color: #54595f;
+//   text-align: center;
+//   font-weight: 600;
+//   padding: 50px;
+// `;
+
+// const AboutUsCard = styled.div`
+//   padding-top: 20px;
+//   display: flex;
+//   flex-flow: column;
+//   gap: 10px;
+//   height: 500px;
+//   width: 500px;
+//   color: white;
+//   background-color: white;
+//   text-align: center;
+//   align-items: center;
+//   position: relative;
+//   left: 300px;
+// `;
+
 const HeaderTitle = styled.div`
   font-size: 40px;
-  font-family: "Poppins", Sans-serif;
-  color: #54595f;
-  text-align: right;
+  font-family: "Roboto";
+  color: #01a7a7;
+  text-align: center;
   font-weight: 600;
   padding-top: 50px;
   @media screen and ${Device.mobileL} {
@@ -469,13 +516,18 @@ const Test: NextPage = () => {
         <div style={{ position: "relative" }}>
           <Hidden xs sm>
             <HeaderWrapper>
-              <HeaderTitle>
-                Take your next step with us.
-                {/* // br with us */}
-                {/* Napravite Vaš sljedeći korak s nama.  */}
-                Make your first 3D virtual tour of your property.
-                {/* button action na contact  */}
-              </HeaderTitle>
+              <HeaderTextWrapper>
+                <HeaderTitle>
+                  Take your next step with us.
+                  {/* button action na contact  */}
+                </HeaderTitle>
+                <HeaderText>
+                  Napravite Vaš sljedeći korak s nama.
+                </HeaderText>
+                <HeaderButtonWrapper>
+                  <Button htmlType="submit">Take a look</Button>
+                </HeaderButtonWrapper>
+              </HeaderTextWrapper>
               <img
                 src="./images/invisual/newHeader.svg"
                 alt="test"
@@ -484,25 +536,6 @@ const Test: NextPage = () => {
                 style={{ justifySelf: "center" }}
               />
             </HeaderWrapper>
-            {/* <VideoImage
-              src="./images/invisual/InVisual-white.svg"
-              alt="logo"
-              height={350}
-              width={350}
-            />
-            <video
-              style={{
-                width: "100%",
-                height: "700px",
-                objectFit: "cover",
-              }}
-              loop
-              autoPlay
-              muted
-            >
-              <source src="./images/invisual/0215(2).mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video> */}
           </Hidden>
           <Visible xs sm>
             <HeaderWrapper>
@@ -520,10 +553,18 @@ const Test: NextPage = () => {
           </Visible>
         </div>
         <div>
+          {/* <AboutUsCard>
+          IMA GRAMATICKIH GRESAKA
+            <AboutUs>
+              Our company is a collective of amazing people striving to give you delightful services.
+              Welcome to InVisual, where innovation meets excellence in the real estate painting area. 
+              We specialize in providing top services of 3D virtual tours tailored for your facilities, 
+              ensuring that your property stands out in today’s competitive market.
+            </AboutUs>
+          </AboutUsCard> */}
           <SectionOne>
             <Title id="section1">{currentLanguage.services}</Title>
             <Description>{currentLanguage.servicesTitle}</Description>
-            {/* #f0f2f2 */}
             <Cards>
               <Card>
                 <CardImage src="./images/invisual/question.jpg" alt="test" />
@@ -608,7 +649,7 @@ const Test: NextPage = () => {
                   style={{ borderRadius: 20 }}
                   width="650"
                   height="480"
-                  src="https://my.matterport.com/show/?m=YigZeQhystW"
+                  src="https://my.matterport.com/show/?m=6LJjJbmosbg"
                   frameBorder="0"
                   allowFullScreen
                   allow="xr-spatial-tracking"
@@ -674,10 +715,10 @@ const Test: NextPage = () => {
           </FirstDescription>
           <Hidden xs sm>
             <img
-              src="./images/invisual/test.png"
+              src="./images/invisual/aboutUsImage.png"
               alt="test"
               height={450}
-              width={450}
+              width={650}
             />
           </Hidden>
           <Visible xs sm>
@@ -692,6 +733,7 @@ const Test: NextPage = () => {
         </FirstWrapper>
 
         {/* <ContactForm> */}
+
         <Hidden xs sm>
           <ContactTitle>{currentLanguage.contactFormTitle}</ContactTitle>
           <ContactFormWrapper id="section3">
@@ -754,7 +796,6 @@ const Test: NextPage = () => {
                   placeholder={currentLanguage.cfMessageHolder}
                 />
               </Form.Item>
-
               <Form.Item>
                 <Button htmlType="submit">{currentLanguage.cfSend}</Button>
               </Form.Item>
