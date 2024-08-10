@@ -5,6 +5,7 @@ import Layout from "../components/layouts/Layout";
 import { Hidden, Visible } from "react-grid-system";
 import { Device } from "../constants/breakpoints";
 import { English, Croatian } from "../constants/languange"; // Adjust the path as necessary
+import Faq from "react-faq-component";
 
 const Title = styled.div`
   font-size: 33px;
@@ -63,6 +64,7 @@ const CardFront = styled.div`
   align-items: center;
   justify-content: center;
   padding: 20px;
+  border-radius: 20px;
 `;
 
 const CardBack = styled.div`
@@ -78,6 +80,7 @@ const CardBack = styled.div`
   justify-content: center;
   padding: 20px;
   transform: rotateY(180deg);
+  border-radius: 20px;
 `;
 
 const CardTitle = styled.div`
@@ -480,6 +483,59 @@ export const handleOpenTab = (url: string) => {
   window.open(url, "_blank");
 };
 
+const data = {
+  title: "FAQ",
+  rows: [
+    {
+      title: "WHY 3D VIRTUAL TOURS ARE NECESSARY?",
+      content: `A 3D virtual walk is necessary because it provides users with a deeper and more interactive experience than static images or textual descriptions can provide. It allows users to explore the space in real time, get a better feel for its dimensions, layout, and aesthetics.`,
+    },
+    {
+      title: "WHO NEEDS 3D VIRTUAL TOURS?",
+      content:
+        "Virtual 3D walks can be useful to different groups of people and industries: real estate agents, travel agencies, interior designers, architects, museums and cultural institutions, educational institutions, it is used to display cafes, restaurants, discotheques and fairs. Our 3D virtual tour can be used by anyone who wants to show their property in a virtual way.",
+    },
+    {
+      title: "WHAT ARE THE BENEFITS OF USING 3D VIRTUAL?",
+      content: `Just some of the important ones:
+
+      1.  Better understanding of the space: Users can get a clearer view of the space, its size, layout and functionality through an interactive experience.
+      
+      2. Time saving: Users can explore the space virtually, without the need to be physically present, which can save time, especially in cases where distances are long or when multiple locations need to be explored.
+      
+      3. Marketing advantage: For real estate agents, travel agencies and other industries, 3D virtual tours can be a powerful marketing tool to attract potential customers or visitors.
+      
+      4. Realistic experience: Virtual walks can provide realistic visual information about the space, including colors, textures and light, which helps users create a vivid image.
+      
+      5. Global accessibility: Because virtual walks are available via the Internet, they provide global access to a space or location regardless of physical distance. Users will always be able to access the virtual walk 24/7`,
+    },
+    {
+      title:
+        "HOW LONG DOES IT TAKE TO GET A RECORDING OF THE 3D VIRTUAL TOUR OF MY RESIDENCE",
+      content:
+        "The way we do our work is that we need to come to the property and take photos of your property. A time-consuming photography job can take between 45 minutes and 3 hours depending on the size and layout of your property. After taking photos, it is necessary to arrange the photos in the softer. You can expect your 3D virtual tour the very next day, but if the job is a little bigger and more complex, then you may have to give us an extra day so that your 3D virtual tour can be delivered to you at the highest level!",
+    },
+  ],
+};
+
+const styles = {
+  bgColor: "#f0f2f2",
+  titleTextColor: "#01a7a7",
+  rowTitleColor: "#01a7a7",
+  // rowContentColor: 'grey',
+  // arrowColor: "red",
+  rowContentPaddingTop: "10px",
+  rowContentPaddingBottom: "20px",
+  rowContentPaddingLeft: "20px",
+  rowContentPaddingRight: "20px",
+};
+
+const config = {
+  // animate: true,
+  // arrowIcon: "V",
+  // tabFocus: true
+};
+
 const Test: NextPage = () => {
   const [language, setLanguage] = React.useState<string>("CRO");
 
@@ -617,7 +673,7 @@ const Test: NextPage = () => {
         </MissionDiv>
         <div>
           <SectionOne>
-            <Title id="section1">{currentLanguage.services}</Title>
+            <Title id="section3">{currentLanguage.services}</Title>
             <Description>{currentLanguage.servicesTitle}</Description>
             <Cards>
               <Card>
@@ -657,24 +713,28 @@ const Test: NextPage = () => {
               </Card>
             </Cards>
             <Cards>
-              <CardWithoutHover>
-                <CardImage
-                  src="./images/invisual/dron-main-engl.png"
-                  alt="test"
-                />
-                <CardTitle>{currentLanguage.thirdCardTitle}</CardTitle>
-                <CardDescription
-                  style={{ padding: "0px 25px 0px 25px" }}
-                ></CardDescription>
-              </CardWithoutHover>
-              <CardWithoutHover>
-                <CardImage
-                  src="./images/invisual/camera-main-engl.png"
-                  alt="test"
-                />
-                <CardTitle>{currentLanguage.fourthCardTitle}</CardTitle>
-                <CardDescription></CardDescription>
-              </CardWithoutHover>
+              <Card>
+                <CardFront>
+                  <CardImage
+                    src="./images/invisual/dron-main-engl.png"
+                    alt="test"
+                  />
+                  <CardTitle>{currentLanguage.thirdCardTitle}</CardTitle>
+                  <CardDescription
+                    style={{ padding: "0px 25px 0px 25px" }}
+                  ></CardDescription>
+                </CardFront>
+              </Card>
+              <Card>
+                <CardFront>
+                  <CardImage
+                    src="./images/invisual/camera-main-engl.png"
+                    alt="test"
+                  />
+                  <CardTitle>{currentLanguage.fourthCardTitle}</CardTitle>
+                  <CardDescription></CardDescription>
+                </CardFront>
+              </Card>
             </Cards>
           </SectionOne>
           <ProjectWrapper id="section2">
@@ -761,8 +821,13 @@ const Test: NextPage = () => {
             </Visible>
           </ProjectWrapper>
         </div>
+        <ProjectWrapper style={{ marginTop: 0, alignItems: "center" }}>
+          <div style={{ width: "1000px" }}>
+            <Faq data={data} styles={styles} config={config} />
+          </div>
+        </ProjectWrapper>
         <Hidden xs sm>
-          <CalendlyWrapper>
+          <CalendlyWrapper id="section4">
             <div
               style={{
                 display: "flex",

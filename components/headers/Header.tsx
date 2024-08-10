@@ -284,6 +284,15 @@ export default function Header({
                     scrollToSection("section1");
                   }}
                 >
+                  {currentLanguage.aboutUs}
+                </NavItem>
+                <NavItem
+                  path={path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("section3");
+                  }}
+                >
                   {currentLanguage.services}
                 </NavItem>
                 <NavItem
@@ -294,15 +303,6 @@ export default function Header({
                   }}
                 >
                   {currentLanguage.projects}
-                </NavItem>
-                <NavItem
-                  path={path}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection("section3");
-                  }}
-                >
-                  {currentLanguage.aboutUs}
                 </NavItem>
                 <NavItem
                   path={path}
