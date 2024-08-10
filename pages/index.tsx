@@ -1,13 +1,10 @@
 import * as React from "react";
-import * as Router from "next/router";
 import type { NextPage } from "next";
 import styled from "styled-components";
 import Layout from "../components/layouts/Layout";
 import { Hidden, Visible } from "react-grid-system";
 import { Device } from "../constants/breakpoints";
-import { Button, Form, Input, Select, message } from "antd";
 import { English, Croatian } from "../constants/languange"; // Adjust the path as necessary
-import axios from "axios";
 
 const Title = styled.div`
   font-size: 33px;
@@ -27,30 +24,83 @@ const Description = styled.div`
   padding-top: 10px;
 `;
 
-const FirstWrapper = styled.div`
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  padding: 50px 50px 50px 50px;
-  gap: 60px;
+const Card = styled.div`
+  perspective: 1000px;
+  width: 500px;
+  height: 500px;
+  margin: 20px;
   @media screen and ${Device.mobileL} {
-    flex-flow: column;
+    width: 350px;
+    height: 400px;
   }
   @media screen and ${Device.mobileM} {
-    flex-flow: column;
+    width: 350px;
+    height: 400px;
   }
 `;
-const FirstDescription = styled.div`
-  font-size: 18px;
-  font-weight: 450;
-  font-family: "Poppins", Sans-serif;
-  color: #54595f;
-  width: 40%;
+
+const CardInner = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  ${Card}:hover & {
+    transform: rotateY(180deg);
+  }
+`;
+
+const CardFront = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-color: black;
+  color: black;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`;
+
+const CardBack = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-color: #01a7a7;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transform: rotateY(180deg);
+`;
+
+const CardTitle = styled.div`
+  font-size: 24px;
+  color: white;
+  padding-top: 10px;
   @media screen and ${Device.mobileL} {
-    width: 100%;
+    font-size: 20px;
   }
   @media screen and ${Device.mobileM} {
-    width: 100%;
+    font-size: 20px;
+  }
+`;
+
+const CardDescription = styled.div`
+  font-size: 16px;
+  color: white;
+  padding: 0px 25px 20px 25px;
+  @media screen and ${Device.mobileL} {
+    font-size: 14px;
+  }
+  @media screen and ${Device.mobileM} {
+    font-size: 14px;
   }
 `;
 
@@ -67,62 +117,6 @@ const Cards = styled.div`
   @media screen and ${Device.mobileM} {
     flex-flow: column;
     align-items: center;
-  }
-`;
-
-const CardTitle = styled.div`
-  font-size: 24px;
-  transition: opacity 0.3s ease;
-  @media screen and ${Device.mobileL} {
-    font-size: 20px;
-  }
-  @media screen and ${Device.mobileM} {
-    font-size: 20px;
-  }
-`;
-
-const CardDescription = styled.div`
-  transition: opacity 0.3s ease;
-  font-size: 16px;
-  padding: 0px 25px 20px 25px;
-  @media screen and ${Device.mobileL} {
-    font-size: 14px;
-  }
-  @media screen and ${Device.mobileM} {
-    font-size: 14px;
-  }
-`;
-const Card = styled.div`
-  padding-top: 20px;
-  display: flex;
-  font-family: "Poppins", Sans-serif;
-  flex-flow: column;
-  gap: 10px;
-  height: 500px;
-  width: 500px;
-  color: white;
-  background-color: white;
-  text-align: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #01a7a7;
-  }
-
-  &:hover img,
-  &:hover ${CardTitle}, &:hover ${CardDescription} {
-    opacity: 0;
-  }
-  @media screen and ${Device.mobileL} {
-    width: 350px;
-    height: 400px;
-  }
-  @media screen and ${Device.mobileM} {
-    width: 350px;
-    height: 400px;
   }
 `;
 
@@ -175,29 +169,6 @@ const AdditionalTitle = styled.div`
   }
 `;
 
-const AdditionalTitleTure = styled.div`
-  position: absolute;
-  top: 34%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  color: white;
-  font-size: 22px;
-  font-weight: 700;
-  width: 100%;
-
-  ${Card}:hover & {
-    opacity: 1;
-  }
-  @media screen and ${Device.mobileL} {
-    font-size: 20px;
-  }
-  @media screen and ${Device.mobileM} {
-    font-size: 20px;
-  }
-`;
-
 const AdditionalText = styled.div`
   position: absolute;
   font-size: 16px;
@@ -222,44 +193,9 @@ const AdditionalText = styled.div`
   }
 `;
 
-const Footer = styled.div`
-  background-color: black;
-  width: 100%;
-  height: 200px;
-  align-items: center;
-  justify-content: space-around;
-  display: flex;
-  flex-flow: row;
-  gap: 200px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  @media screen and ${Device.mobileL} {
-    padding: 30px 50px 40px 50px;
-    flex-flow: column;
-    gap: 20px;
-    height: 100%;
-    align-items: baseline;
-  }
-  @media screen and ${Device.mobileM} {
-    padding: 30px 50px 40px 50px;
-    flex-flow: column;
-    gap: 20px;
-    height: 100%;
-    align-items: baseline;
-  }
-`;
-
-const FirstFooter = styled.div`
-  display: flex;
-  flex-flow: column;
-  gap: 10px;
-  color: white;
-`;
-
-const FooterText = styled.p``;
-
 const FooterSocial = styled.p`
   cursor: pointer;
+  color: black;
   &:hover {
     color: #01a7a7;
   }
@@ -301,32 +237,6 @@ const ProjectTitle = styled.div`
   padding-top: 0px;
 `;
 
-const ContactFormWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding-top: 20px;
-  padding-left: 118px;
-  z-index: 1;
-  @media screen and ${Device.mobileL} {
-    padding: 20px 20px 0px 20px;
-  }
-  @media screen and ${Device.mobileM} {
-    padding: 20px 20px 0px 20px;
-  }
-`;
-
-const ContactTitle = styled.div`
-  font-size: 30px;
-  color: black;
-  padding-left: 118px;
-  @media screen and ${Device.mobileL} {
-    padding: 20px 20px 0px 20px;
-  }
-  @media screen and ${Device.mobileM} {
-    padding: 20px 20px 0px 20px;
-  }
-`;
-
 const VideoImage = styled.img`
   position: absolute;
   transform: translate(-50%, -50%);
@@ -362,79 +272,185 @@ const FooterTextWrapper = styled.div`
   cursor: pointer;
 `;
 
-const HeaderWrapper = styled.div`
-  display: grid;
-  padding-top: 45px;
-  padding-left: 64px;
-  grid-template-columns: repeat(2, 1fr);
-  /* @media screen and ${Device.mobileL} {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  @media screen and ${Device.mobileM} {
-    grid-template-columns: repeat(1, 1fr);
-  } */
+const CalendlyWrapper = styled.div`
+  display: flex;
+  flex-flow: row;
+  background-color: #f0f2f2;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  justify-content: center;
+  gap: 90px;
 `;
 
-const HeaderTextWrapper = styled.div`
-  display: row;
-  padding-righy: 64px;
+const CalendlyTitle = styled.div`
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 64px;
+  color: black;
+  width: 80%;
 `;
 
-const HeaderText = styled.div`
-font-size: 28px;
-font-family: "Roboto";
-color: #201a18;
-text-align: center;
-font-weight: 600;
-padding-top: 50px;
-`;
-
-const HeaderButtonWrapper = styled.div`
-  display: row;
-  text-align: center;
-  padding-top: 50px;
-  color: blue;
-`;
-
-// const AboutUs = styled.div`
-//   font-size: 28px;
-//   font-family: "Poppins", Sans-serif;
-//   color: #54595f;
-//   text-align: center;
-//   font-weight: 600;
-//   padding: 50px;
-// `;
-
-// const AboutUsCard = styled.div`
-//   padding-top: 20px;
-//   display: flex;
-//   flex-flow: column;
-//   gap: 10px;
-//   height: 500px;
-//   width: 500px;
-//   color: white;
-//   background-color: white;
-//   text-align: center;
-//   align-items: center;
-//   position: relative;
-//   left: 300px;
-// `;
-
-const HeaderTitle = styled.div`
-  font-size: 40px;
-  font-family: "Roboto";
+const CalendlyTitleSub = styled.div`
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 64px;
   color: #01a7a7;
-  text-align: center;
-  font-weight: 600;
-  padding-top: 50px;
+`;
+
+const CalendlyDescription = styled.div`
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  color: black;
+`;
+
+const EmailLink = styled.a`
+  color: black;
+  &:hover {
+    color: #01a7a7;
+  }
   @media screen and ${Device.mobileL} {
-    font-size: 16px;
   }
 
   @media screen and ${Device.mobileM} {
-    font-size: 16px;
   }
+`;
+
+const MissionDiv = styled.div`
+  background-color: white;
+  width: 100%;
+  padding: 20px 60px 80px 60px;
+  @media screen and ${Device.mobileL} {
+    padding: 60px 10px 60px 10px;
+  }
+  @media screen and ${Device.mobileM} {
+    padding: 60px 10px 60px 10px;
+  }
+`;
+
+const MissionWrapper = styled.div`
+  padding: 60px 100px 60px 100px;
+  background-color: #e8e8e8;
+  border-radius: 40px;
+  display: flex;
+  flex-flow: row;
+  gap: 150px;
+  @media screen and ${Device.mobileL} {
+    flex-flow: column;
+    gap: 30px;
+    padding: 50px 30px 50px 30px;
+  }
+  @media screen and ${Device.mobileM} {
+    flex-flow: column;
+    gap: 30px;
+    padding: 50px 30px 50px 30px;
+  }
+`;
+
+const MissionWrapperSecond = styled.div`
+  display: flex;
+  flex-flow: row;
+  @media screen and ${Device.mobileL} {
+    flex-flow: column;
+  }
+  @media screen and ${Device.mobileM} {
+    flex-flow: column;
+  }
+`;
+
+const FirstMission = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  width: 50%;
+  @media screen and ${Device.mobileL} {
+    width: 100%;
+  }
+  @media screen and ${Device.mobileM} {
+    width: 100%;
+  }
+`;
+const FirstMissionTest = styled.div`
+  display: flex;
+  flex-flow: row;
+  width: 50%;
+  justify-content: center;
+  gap: 60px;
+  @media screen and ${Device.mobileL} {
+    width: 100%;
+    gap: 10px;
+  }
+  @media screen and ${Device.mobileM} {
+    width: 100%;
+    gap: 10px;
+  }
+`;
+
+const FirstMissionTitle = styled.div`
+  color: #01a7a7;
+  font-size: 25px;
+  @media screen and ${Device.mobileL} {
+    font-size: 14px;
+  }
+  @media screen and ${Device.mobileM} {
+    font-size: 14px;
+  }
+`;
+
+const FirstMissionSubtitle = styled.div`
+  color: black;
+  font-size: 40px;
+  @media screen and ${Device.mobileL} {
+    font-size: 30px;
+  }
+  @media screen and ${Device.mobileM} {
+    font-size: 30px;
+  }
+`;
+
+const FirstMissionSubtitleTest = styled.div`
+  color: #01a7a7;
+  font-size: 68px;
+  font-weight: 500;
+  @media screen and ${Device.mobileL} {
+    font-size: 30px;
+  }
+  @media screen and ${Device.mobileM} {
+    font-size: 30px;
+  }
+`;
+
+const FirstMissionSubtitleWhite = styled.div`
+  color: black;
+  font-size: 68px;
+  font-weight: 500;
+  @media screen and ${Device.mobileL} {
+    font-size: 30px;
+  }
+  @media screen and ${Device.mobileM} {
+    font-size: 30px;
+  }
+`;
+
+const FirstMissionDescription = styled.div`
+  color: black;
+  font-size: 18px;
+  width: 90%;
+  text-align: justify;
+  @media screen and ${Device.mobileL} {
+    width: 100%;
+  }
+  @media screen and ${Device.mobileM} {
+    width: 100%;
+  }
+`;
+
+const FirstMissionDescriptionTest = styled.div`
+  color: black;
+  font-size: 22px;
+  font-weight: 500;
 `;
 
 const HeaderDescription = styled.div`
@@ -465,44 +481,12 @@ export const handleOpenTab = (url: string) => {
 };
 
 const Test: NextPage = () => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const router = Router.useRouter();
-  const introDivRef = React.useRef<HTMLDivElement>(null);
   const [language, setLanguage] = React.useState<string>("CRO");
-
-  const { TextArea } = Input;
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [form] = Form.useForm();
-
-  const onFinish = async (values: any) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/send-email",
-        values
-      );
-
-      if (response.data.success) {
-        message.success("Email sent successfully!");
-      } else {
-        message.error("Failed to send email. Please try again later.");
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
-      message.error("Something went wrong. Please try again later.");
-    }
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
   };
+
   const currentLanguage = language === "EN" ? English : Croatian;
 
   return (
@@ -515,82 +499,161 @@ const Test: NextPage = () => {
       <div style={{ width: "100%" }}>
         <div style={{ position: "relative" }}>
           <Hidden xs sm>
-            <HeaderWrapper>
-              <HeaderTextWrapper>
-                <HeaderTitle>
-                  Take your next step with us.
-                  {/* button action na contact  */}
-                </HeaderTitle>
-                <HeaderText>
-                  Napravite Vaš sljedeći korak s nama.
-                </HeaderText>
-                <HeaderButtonWrapper>
-                  <Button htmlType="submit">Take a look</Button>
-                </HeaderButtonWrapper>
-              </HeaderTextWrapper>
-              <img
-                src="./images/invisual/newHeader.svg"
-                alt="test"
-                height={500}
-                width={500}
-                style={{ justifySelf: "center" }}
-              />
-            </HeaderWrapper>
+            <VideoImage
+              src="./images/invisual/InVisual-white.svg"
+              alt="logo"
+              height={350}
+              width={350}
+            />
+            <video
+              style={{
+                width: "100%",
+                height: "700px",
+                objectFit: "cover",
+              }}
+              loop
+              autoPlay
+              muted
+            >
+              <source src="./images/invisual/0215(2).mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </Hidden>
           <Visible xs sm>
-            <HeaderWrapper>
-              <HeaderTitle>
-                Lorem ipsum is here, lorem ipsum is here
-              </HeaderTitle>
-              <img
-                src="./images/invisual/newHeader.svg"
-                alt="test"
-                height={225}
-                width={225}
-                style={{ justifySelf: "center" }}
-              />
-            </HeaderWrapper>
+            <VideoImage
+              src="./images/invisual/InVisual-white.svg"
+              alt="logo"
+              height={350}
+              width={350}
+            />
+            <video
+              style={{
+                width: "100%",
+                height: "700px",
+                objectFit: "cover",
+              }}
+              loop
+              autoPlay
+              muted
+            >
+              <source src="./images/invisual/0215(2).mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </Visible>
         </div>
+        <MissionDiv id="section1">
+          <MissionWrapper>
+            <MissionWrapperSecond>
+              <FirstMission>
+                <FirstMissionTitle>O nama</FirstMissionTitle>
+                <FirstMissionSubtitle>InVisual</FirstMissionSubtitle>
+                <FirstMissionDescription>
+                  gdje pružamo vrhunske usluge 3D virtualne šetnje za nekretnine
+                  u Hrvatskoj i Bosni i Hercegovini. Naš tim koristi najnoviju
+                  opremu kako bi vaša nekretnina bila dostupna za virtualne
+                  posjete 24/7, ističući se na konkurentnom tržištu. Sa strašću
+                  za preciznošću i oštrim okom za detalje, pretvaramo vaš
+                  prostor u vizualno remek-djelo.
+                </FirstMissionDescription>
+                <div style={{ display: "flex", flexFlow: "row", gap: 50 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexFlow: "column",
+                      alignSelf: "center",
+                    }}
+                  >
+                    <div style={{ display: "flex", flexFlow: "row" }}>
+                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
+                      <FirstMissionSubtitleWhite>25</FirstMissionSubtitleWhite>
+                    </div>
+                    <FirstMissionDescriptionTest>
+                      Apartments
+                    </FirstMissionDescriptionTest>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexFlow: "column",
+                      alignSelf: "center",
+                    }}
+                  >
+                    <div style={{ display: "flex", flexFlow: "row" }}>
+                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
+                      <FirstMissionSubtitleWhite>40</FirstMissionSubtitleWhite>
+                    </div>
+                    <FirstMissionDescriptionTest>
+                      Houses
+                    </FirstMissionDescriptionTest>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexFlow: "column",
+                      alignSelf: "center",
+                    }}
+                  >
+                    <div style={{ display: "flex", flexFlow: "row" }}>
+                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
+                      <FirstMissionSubtitleWhite>40</FirstMissionSubtitleWhite>
+                    </div>
+                    <FirstMissionDescriptionTest>
+                      Clients
+                    </FirstMissionDescriptionTest>
+                  </div>
+                </div>
+              </FirstMission>
+              <FirstMissionTest>
+                <img
+                  src="./images/invisual/newHeader.svg"
+                  alt="test"
+                  height={400}
+                  width={450}
+                  style={{ justifyContent: "center" }}
+                />
+              </FirstMissionTest>
+            </MissionWrapperSecond>
+          </MissionWrapper>
+        </MissionDiv>
         <div>
-          {/* <AboutUsCard>
-          IMA GRAMATICKIH GRESAKA
-            <AboutUs>
-              Our company is a collective of amazing people striving to give you delightful services.
-              Welcome to InVisual, where innovation meets excellence in the real estate painting area. 
-              We specialize in providing top services of 3D virtual tours tailored for your facilities, 
-              ensuring that your property stands out in today’s competitive market.
-            </AboutUs>
-          </AboutUsCard> */}
           <SectionOne>
             <Title id="section1">{currentLanguage.services}</Title>
             <Description>{currentLanguage.servicesTitle}</Description>
             <Cards>
               <Card>
-                <CardImage src="./images/invisual/question.jpg" alt="test" />
-                <CardTitle>{currentLanguage.firstCardTitle}</CardTitle>
-                <CardDescription>
-                  {currentLanguage.firstCardDescription}
-                </CardDescription>
-                <AdditionalTitle>
-                  {currentLanguage.firstCardHover}
-                </AdditionalTitle>
-                <AdditionalText>
-                  {currentLanguage.firstCardHoverDescription}
-                </AdditionalText>
+                <CardInner>
+                  <CardFront>
+                    <CardImage
+                      src="./images/invisual/question.jpg"
+                      alt="test"
+                    />
+                    <CardTitle>{currentLanguage.firstCardTitle}</CardTitle>
+                  </CardFront>
+                  <CardBack>
+                    <AdditionalTitle>
+                      {currentLanguage.firstCardHover}
+                    </AdditionalTitle>
+                    <AdditionalText>
+                      {currentLanguage.firstCardHoverDescription}
+                    </AdditionalText>
+                  </CardBack>
+                </CardInner>
               </Card>
               <Card>
-                <CardImage src="./images/invisual/x3.png" alt="test" />
-                <CardTitle>{currentLanguage.secondCardTitle}</CardTitle>
-                <CardDescription>
-                  {currentLanguage.secondCardDescription}
-                </CardDescription>
-                <AdditionalTitleTure>
-                  {currentLanguage.secondCardHover}
-                </AdditionalTitleTure>
-                <AdditionalText>
-                  {currentLanguage.secondCardHoverDescription}
-                </AdditionalText>
+                <CardInner>
+                  <CardFront>
+                    <CardImage src="./images/invisual/x3.png" alt="test" />
+                    <CardTitle>{currentLanguage.secondCardTitle}</CardTitle>
+                  </CardFront>
+                  <CardBack>
+                    <AdditionalTitle>
+                      {currentLanguage.secondCardHover}
+                    </AdditionalTitle>
+                    <AdditionalText>
+                      {currentLanguage.secondCardHoverDescription}
+                    </AdditionalText>
+                  </CardBack>
+                </CardInner>
               </Card>
             </Cards>
             <Cards>
@@ -610,7 +673,7 @@ const Test: NextPage = () => {
                   alt="test"
                 />
                 <CardTitle>{currentLanguage.fourthCardTitle}</CardTitle>
-                <CardDescription> </CardDescription>
+                <CardDescription></CardDescription>
               </CardWithoutHover>
             </Cards>
           </SectionOne>
@@ -697,270 +760,63 @@ const Test: NextPage = () => {
               </Project>
             </Visible>
           </ProjectWrapper>
-          <Title id="section3">{currentLanguage.aboutUs}</Title>
         </div>
-        <FirstWrapper>
-          <FirstDescription>
-            <span>{currentLanguage.aboutUsOne} </span>
-            <span>
-              {" "}
-              <br />
-              {currentLanguage.aboutUsSecond}
-            </span>{" "}
-            <span>
-              <br /> {currentLanguage.aboutUsThird}
-            </span>
-            <br />
-            {currentLanguage.aboutUsFourth}
-          </FirstDescription>
-          <Hidden xs sm>
-            <img
-              src="./images/invisual/aboutUsImage.png"
-              alt="test"
-              height={450}
-              width={650}
-            />
-          </Hidden>
-          <Visible xs sm>
-            <img
-              src="./images/invisual/test.png"
-              alt="test"
-              height={300}
-              width={300}
-              style={{ alignSelf: "center" }}
-            />
-          </Visible>
-        </FirstWrapper>
-
-        {/* <ContactForm> */}
-
         <Hidden xs sm>
-          <ContactTitle>{currentLanguage.contactFormTitle}</ContactTitle>
-          <ContactFormWrapper id="section3">
-            <Form
-              layout="vertical"
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              autoComplete="off"
+          <CalendlyWrapper>
+            <div
+              style={{
+                display: "flex",
+                flexFlow: "column",
+                alignSelf: "start",
+                background: "#f0f2f2",
+                padding: "0px 60px 60px 60px",
+                borderRadius: 40,
+                gap: 20,
+                width: 650,
+              }}
             >
-              <Form.Item
-                label={currentLanguage.cfName}
-                name="name"
-                style={{ width: 500 }}
-                rules={[{ required: true, message: "Please input your name!" }]}
+              <CalendlyTitleSub>CAPTURE YOUR SPACE</CalendlyTitleSub>
+              <CalendlyTitle>Ready to Record Your Apartment?</CalendlyTitle>
+              <CalendlyDescription>
+                Schedule your 3D scanning session today!
+              </CalendlyDescription>
+              <CalendlyDescription>
+                Or contact us on:
+                <EmailLink href="mailto:invisual.zg@gmail.com">
+                  invisual.zg@gmail.com
+                </EmailLink>
+                <EmailLink href="tel:+385976483828">
+                  HR: +385 97 648 3828
+                </EmailLink>
+                <EmailLink href="tel:+38763757084">
+                  BIH: +387 63 757 084
+                </EmailLink>
+              </CalendlyDescription>
+              <FooterTextWrapper
+                onClick={() =>
+                  window.open("https://www.instagram.com/invisual_design/")
+                }
               >
-                <Input
-                  placeholder={currentLanguage.cfNameHolder}
-                  style={{
-                    borderRadius: 200,
-                    border: "1px solid var(--neutral, #D8E8E7)",
-                    fontSize: 12,
-                  }}
+                <img
+                  src="./images/invisual/instagram.png"
+                  alt="test"
+                  height={30}
+                  width={30}
                 />
-              </Form.Item>
-
-              <Form.Item
-                label={currentLanguage.cfEmail}
-                name="email"
-                style={{ width: 500 }}
-                rules={[
-                  { required: true, message: "Please input your email!" },
-                  { type: "email", message: "Please enter a valid email!" },
-                ]}
-              >
-                <Input
-                  placeholder={currentLanguage.cfEmailHolder}
-                  style={{
-                    borderRadius: 200,
-                    border: "1px solid var(--neutral, #D8E8E7)",
-                    fontSize: 12,
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                label={currentLanguage.cfMessage}
-                name="message"
-                rules={[
-                  { required: true, message: "Molimo upišite svoju poruku!" },
-                ]}
-              >
-                <TextArea
-                  style={{
-                    height: 200,
-                    borderRadius: 20,
-                    padding: 14,
-                    border: "1px solid var(--neutral, #D8E8E7)",
-                    fontSize: 12,
-                  }}
-                  placeholder={currentLanguage.cfMessageHolder}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Button htmlType="submit">{currentLanguage.cfSend}</Button>
-              </Form.Item>
-            </Form>
-          </ContactFormWrapper>
-        </Hidden>
-        <Visible xs sm>
-          <ContactTitle>{currentLanguage.contactFormTitle}</ContactTitle>
-          <ContactFormWrapper id="section3">
-            <Form
-              layout="vertical"
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              autoComplete="off"
-            >
-              <Form.Item
-                label={currentLanguage.cfName}
-                name="name"
-                style={{ width: 350 }}
-                rules={[{ required: true, message: "Please input your name!" }]}
-              >
-                <Input
-                  placeholder={currentLanguage.cfNameHolder}
-                  style={{
-                    borderRadius: 200,
-                    border: "1px solid var(--neutral, #D8E8E7)",
-                    fontSize: 12,
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                label={currentLanguage.cfEmail}
-                name="email"
-                style={{ width: 350 }}
-                rules={[
-                  { required: true, message: "Please input your email!" },
-                  { type: "email", message: "Please enter a valid email!" },
-                ]}
-              >
-                <Input
-                  placeholder={currentLanguage.cfEmailHolder}
-                  style={{
-                    borderRadius: 200,
-                    border: "1px solid var(--neutral, #D8E8E7)",
-                    fontSize: 12,
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                label={currentLanguage.cfMessage}
-                name="message"
-                rules={[
-                  { required: true, message: "Molimo upišite svoju poruku!" },
-                ]}
-              >
-                <TextArea
-                  style={{
-                    height: 200,
-                    borderRadius: 20,
-                    padding: 14,
-                    border: "1px solid var(--neutral, #D8E8E7)",
-                    fontSize: 12,
-                  }}
-                  placeholder={currentLanguage.cfMessageHolder}
-                />
-              </Form.Item>
-
-              <Form.Item>
-                <Button htmlType="submit">{currentLanguage.cfSend}</Button>
-              </Form.Item>
-            </Form>
-          </ContactFormWrapper>
-        </Visible>
-        <Hidden xs sm>
-          <Footer id="section4">
-            <div style={{ alignSelf: "center" }}>
-              <img
-                src="./images/invisual/InVisual-white.svg"
-                alt="test"
-                height={80}
-                width={100}
-              />
+                <FooterSocial>Instagram</FooterSocial>
+              </FooterTextWrapper>
             </div>
-            <FirstFooter>
-              <FooterText>{currentLanguage.footerText}</FooterText>
-              <FooterText>+385 97 648 3828</FooterText>
-              <FooterText>invisual.zg@gmail.com</FooterText>
-              <FooterText>+387 63 757 084</FooterText>
-              <FooterText>invisual.mo@gmail.com</FooterText>
-            </FirstFooter>
-            <FirstFooter>
-              <FooterText>{currentLanguage.footerSocial}</FooterText>
-              <FooterTextWrapper
-                onClick={() =>
-                  window.open("https://www.instagram.com/invisual_design/")
-                }
-              >
-                <img
-                  src="./images/invisual/instagram.png"
-                  alt="test"
-                  height={20}
-                  width={20}
-                />
-                <FooterSocial>Instagram</FooterSocial>
-              </FooterTextWrapper>
-              <FooterTextWrapper
-                onClick={() =>
-                  window.open(
-                    "https://www.facebook.com/profile.php?id=61556136487002"
-                  )
-                }
-              >
-                <img
-                  src="./images/invisual/facebook.png"
-                  alt="test"
-                  height={20}
-                  width={20}
-                />
-                <FooterSocial>Facebook</FooterSocial>
-              </FooterTextWrapper>
-            </FirstFooter>
-          </Footer>
+            <iframe
+              style={{ borderRadius: 20 }}
+              width="500"
+              height="500"
+              src="https://calendly.com/julianazoth/discovery?hide_event_type_details=1&hide_gdpr_banner=1&month=2024-05"
+              frameBorder="0"
+              allowFullScreen
+              allow="xr-spatial-tracking"
+            ></iframe>
+          </CalendlyWrapper>
         </Hidden>
-        <Visible xs sm>
-          <Footer>
-            <FirstFooter>
-              <FooterText>{currentLanguage.footerText}</FooterText>
-              <FooterText>+385 97 648 3828</FooterText>
-              <FooterText>invisual.zg@gmail.com</FooterText>
-            </FirstFooter>
-            <FirstFooter>
-              <FooterText>{currentLanguage.footerSocial}</FooterText>
-              <FooterTextWrapper
-                onClick={() =>
-                  window.open("https://www.instagram.com/invisual_design/")
-                }
-              >
-                <img
-                  src="./images/invisual/instagram.png"
-                  alt="test"
-                  height={20}
-                  width={20}
-                />
-                <FooterSocial>Instagram</FooterSocial>
-              </FooterTextWrapper>
-              <FooterTextWrapper
-                onClick={() =>
-                  window.open(
-                    "https://www.facebook.com/profile.php?id=61556136487002"
-                  )
-                }
-              >
-                <img
-                  src="./images/invisual/facebook.png"
-                  alt="test"
-                  height={20}
-                  width={20}
-                />
-                <FooterSocial>Facebook</FooterSocial>
-              </FooterTextWrapper>
-            </FirstFooter>
-          </Footer>
-        </Visible>
       </div>
     </Layout>
   );
