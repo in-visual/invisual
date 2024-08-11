@@ -283,6 +283,17 @@ const CalendlyWrapper = styled.div`
   padding-bottom: 20px;
   justify-content: center;
   gap: 90px;
+  @media screen and ${Device.mobileL} {
+    flex-flow: column;
+    gap: 20px;
+    padding-bottom: 50px;
+  }
+
+  @media screen and ${Device.mobileM} {
+    flex-flow: column;
+    gap: 20px;
+    padding-bottom: 50px;
+  }
 `;
 
 const CalendlyTitle = styled.div`
@@ -291,6 +302,15 @@ const CalendlyTitle = styled.div`
   line-height: 64px;
   color: black;
   width: 80%;
+  @media screen and ${Device.mobileL} {
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  @media screen and ${Device.mobileM} {
+    font-size: 30px;
+    line-height: 45px;
+  }
 `;
 
 const CalendlyTitleSub = styled.div`
@@ -579,8 +599,8 @@ const Test: NextPage = () => {
             <VideoImage
               src="./images/invisual/InVisual-white.svg"
               alt="logo"
-              height={350}
-              width={350}
+              height={250}
+              width={250}
             />
             <video
               style={{
@@ -660,13 +680,25 @@ const Test: NextPage = () => {
                 </div>
               </FirstMission>
               <FirstMissionTest>
-                <img
-                  src="./images/invisual/newHeader.svg"
-                  alt="test"
-                  height={400}
-                  width={450}
-                  style={{ justifyContent: "center" }}
-                />
+                <Visible xs sm>
+                  <img
+                    src="./images/invisual/newHeader.svg"
+                    alt="test"
+                    height={250}
+                    width={300}
+                    style={{ justifyContent: "center" }}
+                  />
+                </Visible>
+
+                <Hidden xs sm>
+                  <img
+                    src="./images/invisual/newHeader.svg"
+                    alt="test"
+                    height={400}
+                    width={450}
+                    style={{ justifyContent: "center" }}
+                  />
+                </Hidden>
               </FirstMissionTest>
             </MissionWrapperSecond>
           </MissionWrapper>
@@ -822,9 +854,16 @@ const Test: NextPage = () => {
           </ProjectWrapper>
         </div>
         <ProjectWrapper style={{ marginTop: 0, alignItems: "center" }}>
-          <div style={{ width: "1000px" }}>
-            <Faq data={data} styles={styles} config={config} />
-          </div>
+          <Hidden xs sm>
+            <div style={{ width: "1000px" }}>
+              <Faq data={data} styles={styles} config={config} />
+            </div>
+          </Hidden>
+          <Visible xs sm>
+            <div style={{ width: "350px" }}>
+              <Faq data={data} styles={styles} config={config} />
+            </div>
+          </Visible>
         </ProjectWrapper>
         <Hidden xs sm>
           <CalendlyWrapper id="section4">
@@ -882,6 +921,62 @@ const Test: NextPage = () => {
             ></iframe>
           </CalendlyWrapper>
         </Hidden>
+        <Visible xs sm>
+          <CalendlyWrapper id="section4">
+            <div
+              style={{
+                display: "flex",
+                flexFlow: "column",
+                alignSelf: "start",
+                background: "#f0f2f2",
+                padding: "0px 20px 60px 30px",
+                borderRadius: 40,
+                gap: 20,
+                width: 350,
+              }}
+            >
+              <CalendlyTitleSub>CAPTURE YOUR SPACE</CalendlyTitleSub>
+              <CalendlyTitle>Ready to Record Your Apartment?</CalendlyTitle>
+              <CalendlyDescription>
+                Schedule your 3D scanning session today!
+              </CalendlyDescription>
+              <CalendlyDescription>
+                Or contact us on:
+                <EmailLink href="mailto:invisual.zg@gmail.com">
+                  invisual.zg@gmail.com
+                </EmailLink>
+                <EmailLink href="tel:+385976483828">
+                  HR: +385 97 648 3828
+                </EmailLink>
+                <EmailLink href="tel:+38763757084">
+                  BIH: +387 63 757 084
+                </EmailLink>
+              </CalendlyDescription>
+              <FooterTextWrapper
+                onClick={() =>
+                  window.open("https://www.instagram.com/invisual_design/")
+                }
+              >
+                <img
+                  src="./images/invisual/instagram.png"
+                  alt="test"
+                  height={30}
+                  width={30}
+                />
+                <FooterSocial>Instagram</FooterSocial>
+              </FooterTextWrapper>
+            </div>
+            <iframe
+              style={{ borderRadius: 20, alignSelf: "center" }}
+              width="350"
+              height="500"
+              src="https://calendly.com/julianazoth/discovery?hide_event_type_details=1&hide_gdpr_banner=1&month=2024-05"
+              frameBorder="0"
+              allowFullScreen
+              allow="xr-spatial-tracking"
+            ></iframe>
+          </CalendlyWrapper>
+        </Visible>
       </div>
     </Layout>
   );
