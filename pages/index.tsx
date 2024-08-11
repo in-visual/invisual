@@ -5,6 +5,9 @@ import Layout from "../components/layouts/Layout";
 import { Hidden, Visible } from "react-grid-system";
 import { Device } from "../constants/breakpoints";
 import { English, Croatian } from "../constants/languange"; // Adjust the path as necessary
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line import/no-unresolved
 import Faq from "react-faq-component";
 
 const Title = styled.div`
