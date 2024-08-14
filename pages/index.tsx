@@ -568,6 +568,13 @@ const Test: NextPage = () => {
 
   const currentLanguage = language === "EN" ? English : Croatian;
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const video = document.querySelector("video");
+    if (video) {
+      video.play();
+    }
+  });
+
   return (
     <Layout
       title={"In Visual"}
@@ -593,6 +600,7 @@ const Test: NextPage = () => {
               loop
               autoPlay
               muted
+              playsInline
             >
               <source src="./images/invisual/0215(2).mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -614,6 +622,7 @@ const Test: NextPage = () => {
               loop
               autoPlay
               muted
+              playsInline
             >
               <source src="./images/invisual/0215(2).mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -917,7 +926,7 @@ const Test: NextPage = () => {
               style={{ borderRadius: 20 }}
               width="500"
               height="500"
-              src="https://calendly.com/julianazoth/discovery?hide_event_type_details=1&hide_gdpr_banner=1&month=2024-05"
+              src="https://calendly.com/invisual-zg/"
               frameBorder="0"
               allowFullScreen
               allow="xr-spatial-tracking"
@@ -973,7 +982,7 @@ const Test: NextPage = () => {
               style={{ borderRadius: 20, alignSelf: "center" }}
               width="350"
               height="500"
-              src="https://calendly.com/julianazoth/discovery?hide_event_type_details=1&hide_gdpr_banner=1&month=2024-05"
+              src="https://calendly.com/invisual-zg/"
               frameBorder="0"
               allowFullScreen
               allow="xr-spatial-tracking"
