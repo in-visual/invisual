@@ -568,13 +568,6 @@ const Test: NextPage = () => {
 
   const currentLanguage = language === "EN" ? English : Croatian;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const video = document.querySelector("video");
-    if (video) {
-      video.play();
-    }
-  });
-
   return (
     <Layout
       title={"In Visual"}
