@@ -4,6 +4,7 @@ export const English = {
   projects: "Projects",
   aboutUs: "About Us",
   contact: "Contact",
+  faq: "FAQ",
   language: "Language",
   english: "English",
   croatian: "Croatian",
@@ -66,6 +67,7 @@ export const English = {
 export const Croatian = {
   services: "Usluge",
   projects: "Projekti",
+  faq: "FAQ",
   aboutUs: "O nama",
   contact: "Kontakt",
   language: "Jezik",

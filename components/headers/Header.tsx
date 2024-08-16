@@ -308,6 +308,15 @@ export default function Header({
                   path={path}
                   onClick={(e) => {
                     e.preventDefault();
+                    scrollToSection("section5");
+                  }}
+                >
+                  {currentLanguage.faq}
+                </NavItem>
+                <NavItem
+                  path={path}
+                  onClick={(e) => {
+                    e.preventDefault();
                     scrollToSection("section4");
                   }}
                 >
