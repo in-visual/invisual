@@ -506,41 +506,6 @@ export const handleOpenTab = (url: string) => {
   window.open(url, "_blank");
 };
 
-const data = {
-  title: "FAQ",
-  rows: [
-    {
-      title: "WHY 3D VIRTUAL TOURS ARE NECESSARY?",
-      content: `A 3D virtual walk is necessary because it provides users with a deeper and more interactive experience than static images or textual descriptions can provide. It allows users to explore the space in real time, get a better feel for its dimensions, layout, and aesthetics.`,
-    },
-    {
-      title: "WHO NEEDS 3D VIRTUAL TOURS?",
-      content:
-        "Virtual 3D walks can be useful to different groups of people and industries: real estate agents, travel agencies, interior designers, architects, museums and cultural institutions, educational institutions, it is used to display cafes, restaurants, discotheques and fairs. Our 3D virtual tour can be used by anyone who wants to show their property in a virtual way.",
-    },
-    {
-      title: "WHAT ARE THE BENEFITS OF USING 3D VIRTUAL?",
-      content: `Just some of the important ones:
-
-      1.  Better understanding of the space: Users can get a clearer view of the space, its size, layout and functionality through an interactive experience.
-      
-      2. Time saving: Users can explore the space virtually, without the need to be physically present, which can save time, especially in cases where distances are long or when multiple locations need to be explored.
-      
-      3. Marketing advantage: For real estate agents, travel agencies and other industries, 3D virtual tours can be a powerful marketing tool to attract potential customers or visitors.
-      
-      4. Realistic experience: Virtual walks can provide realistic visual information about the space, including colors, textures and light, which helps users create a vivid image.
-      
-      5. Global accessibility: Because virtual walks are available via the Internet, they provide global access to a space or location regardless of physical distance. Users will always be able to access the virtual walk 24/7`,
-    },
-    {
-      title:
-        "HOW LONG DOES IT TAKE TO GET A RECORDING OF THE 3D VIRTUAL TOUR OF MY RESIDENCE",
-      content:
-        "The way we do our work is that we need to come to the property and take photos of your property. A time-consuming photography job can take between 45 minutes and 3 hours depending on the size and layout of your property. After taking photos, it is necessary to arrange the photos in the softer. You can expect your 3D virtual tour the very next day, but if the job is a little bigger and more complex, then you may have to give us an extra day so that your 3D virtual tour can be delivered to you at the highest level!",
-    },
-  ],
-};
-
 const styles = {
   bgColor: "#f0f2f2",
   titleTextColor: "#01a7a7",
@@ -567,6 +532,28 @@ const Test: NextPage = () => {
   };
 
   const currentLanguage = language === "EN" ? English : Croatian;
+
+  const data = {
+    title: "FAQ",
+    rows: [
+      {
+        title: currentLanguage.faqFQ,
+        content: currentLanguage.faqFA,
+      },
+      {
+        title: currentLanguage.faqSQ,
+        content: currentLanguage.faqSA,
+      },
+      {
+        title: currentLanguage.faqTQ,
+        content: currentLanguage.faqTA,
+      },
+      {
+        title: currentLanguage.faqFoQ,
+        content: currentLanguage.faqFoA,
+      },
+    ],
+  };
 
   return (
     <Layout
@@ -629,12 +616,7 @@ const Test: NextPage = () => {
                 <FirstMissionTitle>O nama</FirstMissionTitle>
                 <FirstMissionSubtitle>InVisual</FirstMissionSubtitle>
                 <FirstMissionDescription>
-                  gdje pružamo vrhunske usluge 3D virtualne šetnje za nekretnine
-                  u Hrvatskoj i Bosni i Hercegovini. Naš tim koristi najnoviju
-                  opremu kako bi vaša nekretnina bila dostupna za virtualne
-                  posjete 24/7, ističući se na konkurentnom tržištu. Sa strašću
-                  za preciznošću i oštrim okom za detalje, pretvaramo vaš
-                  prostor u vizualno remek-djelo.
+                  {currentLanguage.firstDescription}
                 </FirstMissionDescription>
                 <div style={{ display: "flex", flexFlow: "row", gap: 50 }}>
                   <div
@@ -645,11 +627,11 @@ const Test: NextPage = () => {
                     }}
                   >
                     <div style={{ display: "flex", flexFlow: "row" }}>
-                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
                       <FirstMissionSubtitleWhite>25</FirstMissionSubtitleWhite>
+                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
                     </div>
                     <FirstMissionDescriptionTest>
-                      Apartments
+                      {currentLanguage.apartments}
                     </FirstMissionDescriptionTest>
                   </div>
                   <div
@@ -660,11 +642,11 @@ const Test: NextPage = () => {
                     }}
                   >
                     <div style={{ display: "flex", flexFlow: "row" }}>
-                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
                       <FirstMissionSubtitleWhite>40</FirstMissionSubtitleWhite>
+                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
                     </div>
                     <FirstMissionDescriptionTest>
-                      Houses
+                      {currentLanguage.houses}
                     </FirstMissionDescriptionTest>
                   </div>
                   <div
@@ -675,11 +657,11 @@ const Test: NextPage = () => {
                     }}
                   >
                     <div style={{ display: "flex", flexFlow: "row" }}>
-                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
                       <FirstMissionSubtitleWhite>40</FirstMissionSubtitleWhite>
+                      <FirstMissionSubtitleTest>+</FirstMissionSubtitleTest>
                     </div>
                     <FirstMissionDescriptionTest>
-                      Clients
+                      {currentLanguage.clients}
                     </FirstMissionDescriptionTest>
                   </div>
                 </div>
@@ -884,13 +866,15 @@ const Test: NextPage = () => {
                 width: 650,
               }}
             >
-              <CalendlyTitleSub>CAPTURE YOUR SPACE</CalendlyTitleSub>
-              <CalendlyTitle>Ready to Record Your Apartment?</CalendlyTitle>
+              <CalendlyTitleSub>
+                {currentLanguage.contactCapture}
+              </CalendlyTitleSub>
+              <CalendlyTitle>{currentLanguage.contactRecord}</CalendlyTitle>
               <CalendlyDescription>
-                Schedule your 3D scanning session today!
+                {currentLanguage.contactSchedule}
               </CalendlyDescription>
               <CalendlyDescription>
-                Or contact us on:
+                {currentLanguage.contactOr}
                 <EmailLink href="mailto:invisual.zg@gmail.com">
                   invisual.zg@gmail.com
                 </EmailLink>
