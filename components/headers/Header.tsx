@@ -182,6 +182,7 @@ type HeaderProps = {
     services: string;
     aboutUs: string;
     contact: string;
+    faq: string;
   };
   language: string;
 };
